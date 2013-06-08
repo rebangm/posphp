@@ -1,0 +1,3 @@
+pos_home_homepage:
+    pattern:  /
+    defaults: { _controller: PosHomeBundle:Default:index }

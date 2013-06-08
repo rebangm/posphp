@@ -1,0 +1,7 @@
+pos_hr_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: PosHRBundle:Default:index }
+
+pos_hr_add_user:
+    pattern:  /user/add/{name}
+    defaults: { _controller: PosHRBundle:Default:adduser }

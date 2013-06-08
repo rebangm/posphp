@@ -1,0 +1,12 @@
+pos_home:
+    resource: "@PosHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pos_user:
+    resource: "@PosUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+pos_hr:
+    resource: "@PosHRBundle/Resources/config/routing.yml"
+    prefix:   /
+

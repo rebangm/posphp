@@ -1,0 +1,7 @@
+parameters:
+#    pos_hr.example.class: Pos\HRBundle\Example
+
+services:
+#    pos_hr.example:
+#        class: %pos_hr.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

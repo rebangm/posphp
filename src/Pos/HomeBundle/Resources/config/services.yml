@@ -1,0 +1,7 @@
+parameters:
+#    pos_home.example.class: Pos\HomeBundle\Example
+
+services:
+#    pos_home.example:
+#        class: %pos_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

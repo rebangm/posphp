@@ -1,0 +1,9 @@
+pos_user_login:
+    pattern:  /login
+    defaults: { _controller: PosUserBundle:Security:login }
+ 
+pos_user_login_check:
+    pattern:   /login_check
+ 
+pos_user_logout:
+    pattern:   /logout
