@@ -24,29 +24,31 @@ class Users implements FixtureInterface, ContainerAwareInterface
     {
 
         // Les noms d'utilisateurs à créer
-        $noms = array( 'jpdepigny', 'esage' );
+        $noms = array( 'jpdepigny' => array('Jean-Philippe','Dépigny','jpdepigny'), 'esage' => array('Elodie','Sage','esage'), 'edepigny' => array('Elise','Dépigny','edepigny'));
 
         foreach ( $noms as $i => $nom )
         {
             // On crée l'utilisateur
             $users[$i] = new User;
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($users[$i]);
-            var_dump($encoder);
-            var_dump($nom);
-            var_dump($encoder->encodePassword($nom, $users[$i]->getSalt()));
-            $users[$i]->setPassword($encoder->encodePassword($nom, $users[$i]->getSalt()));
-            //$users[$i]->setSalt('');
-            var_dump($users[$i]->getSalt());
-            // Le nom d'utilisateur et le mot de passe sont identiques
-            $users[$i]->setUsername($nom);
+           
+            $users[$i]->setPassword($encoder->encodePassword($i, $users[$i]->getSalt()));
             
-            $users[$i]->setFirstName($nom);
-            $users[$i]->setLastName($nom);
+            // Le nom d'utilisateur et le mot de passe sont identiques
+            $users[$i]->setUsername($i);
+            
+            $users[$i]->setFirstName($nom[0]);
+            $users[$i]->setLastName($nom[1]);
             //$users[$i]->set($nom);
             // Le sel et les rôles sont vides pour l'instant
             $users[$i]->setRoles(array( 'ROLE_USER' ));
-
+            
+            if($i == 'jpdepigny')
+                $users[$i]->setRoles(array( 'ROLE_ADMIN' ));
+            if($i == 'edepigny')
+                $users[$i]->setIsActive ( False);
             // On le persiste
+            //var_dump($users[$i]);
             $manager->persist($users[$i]);
         }
 

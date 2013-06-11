@@ -1,0 +1,26 @@
+{% extends "PosUserBundle::user.html.twig" %}
+ 
+{% block content %}
+ 
+    <h3>user : {{user.id}}</h3>
+
+    <div class="content-error">
+        {% for key, flashMessages in app.session.FlashBag.all() %}
+            {% for flashMessage in flashMessages %}
+            <div class="alert alert-{{key}}">
+               {{ flashMessage }}
+            </div>
+            {% endfor %}
+        {% endfor %}
+        
+    </div>
+    <div class="content-error">
+        {{user.id}}
+        
+        {% for attribute in user %}
+            {{attribute}}
+        {% endfor %}
+    </div>
+ 
+{% endblock %}
+
