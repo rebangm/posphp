@@ -1,8 +1,20 @@
 {% extends "::layout.html.twig" %}
-@PosUserBundle
-{% block 'stylesheets' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
+
+{% block stylesheets %}
+
+    {{parent() }}
+    {%stylesheets output='css/compiled/user.css' filter='cssrewrite'               
+                "bundles/posuser/css/*"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
 {% endblock %}
-{% block 'javascripts' %}
-    
+{% block javascripts %}
+    {{parent() }}
+    {%stylesheets output='css/compiled/user.js'               
+                "bundles/posuser/css/*"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}

@@ -25,9 +25,11 @@
                     <td>{{user.lastname}}</td>
                     <td>{{user.firstname}}</td>
                     {% if user.isActive %}
-                        <td><a href="{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}" class="btn btn-success"><i class="icon-ok icon-white"></i></a></td>
+                        <td><button onclick="userSetActive('{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}')" class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>
+                        {#<td><a href="{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}" class="btn btn-success"><i class="icon-ok icon-white"></i></a></td>#}
                     {% else %}
-                        <td><a href="{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 1 }) }}" class="btn btn-danger"><i class="icon-remove icon-white"></i></a></td>
+
+                        <td><button onclick="userSetActive('{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 1 }) }}')" class="btn btn-danger"><i class="icon-remove icon-white"></i></button></td>
                     {% endif %}
                     <td>
                         <a href="{{ path('pos_user_manage_edit', {'id': user.id }) }}" class="btn"><i class="icon-edit"></i></a>

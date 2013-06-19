@@ -6,9 +6,9 @@
     <title>{% block title %}Pos{% endblock %}</title>
  
     {% block stylesheets %}
-        {% stylesheets output='css/compiled/main.css' filter='cssrewrite,yui_css'
-                "css/bootstrap.css"
-                "css/bootstrap-responsive.css"
+        <link href="{{ asset("css/bootstrap-responsive.min.css") }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" media="screen" />
+        {% stylesheets output='css/compiled/main.css' filter='cssrewrite,yui_css'               
                 "css/main.css"
         %}
             
@@ -40,14 +40,14 @@
   {% endblock %}
   {% block javascripts %}
      {% javascripts output='js/compiled/main.js' filter='yui_js' 
-            'js/bootstrap.js'
+            'js/common.js'
      %}
 
         <script src="{{ asset_url }}"></script>
      {% endjavascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ asset() }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
   {% endblock %}
  
   </body>
