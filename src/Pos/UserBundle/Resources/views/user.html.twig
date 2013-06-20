@@ -12,9 +12,9 @@
 {% endblock %}
 {% block javascripts %}
     {{parent() }}
-    {%stylesheets output='css/compiled/user.js'               
-                "bundles/posuser/css/*"
+    {%stylesheets output='js/compiled/user.js'               
+                "bundles/posuser/js/*"
     %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+        <script type="text/javascript" src="{{ asset_url }}" /></script>
     {% endstylesheets %}
 {% endblock %}

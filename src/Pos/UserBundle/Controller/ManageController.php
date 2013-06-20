@@ -4,6 +4,7 @@ namespace Pos\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Pos\UserBundle\Entity\User;
 
 class ManageController extends Controller
@@ -26,26 +27,31 @@ class ManageController extends Controller
             ->getRepository('PosUserBundle:User');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
-        
+
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'page'  => $page,
-                                    'users' => $listUsers ));
+                'users' => $listUsers ));
     }
 
     public function setActiveAction($id, $active)
     {
-        $em      = $this->getDoctrine()->getManager();
+        $em   = $this->getDoctrine()->getManager();
         $user = $em->getRepository('PosUserBundle:User')->find($id);
 
         if ( !$user ) {
-            throw $this->createNotFoundException(
-                'Aucun utilisateur trouvé pour cet id : ' . $id
-            );
+            $status  = 'error';
+            $message = 'Aucun utilisateur trouvé pour cet id : ' . $id;
+        } else {
+            $user->setIsActive($active);
+            $em->flush();
+            $status  = 'success';
+            $message = array(
+                'id'  => $id,
+                'active' => $active,
+                'url' => $this->generateUrl('pos_user_manage_ajax_active',array( 'id'=> $id, 'active' => ( int ) !$active )));
         }
 
-        $user->setIsActive($active);
-        $em->flush();
-        return new Response('id : ' . $id . ', active : ' . $active . ' ');
+        return new JsonResponse(array( 'status'  => $status, 'message' => $message ));
     }
 
     public function editAction($id)
@@ -55,9 +61,9 @@ class ManageController extends Controller
             ->getRepository('PosUserBundle:User');
 
         $user = $repository->findOneById($id);
-        
+
         return $this->render('PosUserBundle:Manage:edit.html.twig',
                              array( 'user' => $user ));
     }
-    
+
 }
