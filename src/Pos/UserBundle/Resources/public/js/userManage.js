@@ -23,8 +23,6 @@ function userSetActive(button){
                     button.addClass("btn-danger").removeClass("btn-success");
                 
                 button.attr("data-url", data.message.url);
-                
-                
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(jqXHR);
