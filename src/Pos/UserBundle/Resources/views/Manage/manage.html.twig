@@ -14,7 +14,7 @@
         {% endfor %}
         
     </div>
-    <table class="table table-striped table-hover table-condensed">
+    <table id="usertable" class="table table-striped table-hover table-condensed">
         <thead>
             <tr><td class="">id</td><td>Utilisateur</td><td>Nom</td><td>Pr&eacute;nom</td><td>Actif</td><td>action</td></tr> 
         </thead>
@@ -26,6 +26,7 @@
                     <td>{{user.firstname}}</td>
                     {% if user.isActive %}
                         <td><button onclick="userSetActive('{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}')" class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>
+                        {"<td><button data-url='{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}'  class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>#}
                         {#<td><a href="{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}" class="btn btn-success"><i class="icon-ok icon-white"></i></a></td>#}
                     {% else %}
 
