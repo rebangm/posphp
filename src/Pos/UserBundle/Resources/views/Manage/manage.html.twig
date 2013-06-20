@@ -26,7 +26,7 @@
                     <td>{{user.firstname}}</td>
                     {% if user.isActive %}
                         <td><button onclick="userSetActive('{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}')" class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>
-                        {"<td><button data-url='{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}'  class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>#}
+                        {#<td><button data-url='{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}'  class="btn btn-success"><i class="icon-ok icon-white"></i></button></td>#}
                         {#<td><a href="{{ path('pos_user_manage_ajax_active', {'id': user.id, 'active': 0 }) }}" class="btn btn-success"><i class="icon-ok icon-white"></i></a></td>#}
                     {% else %}
 
