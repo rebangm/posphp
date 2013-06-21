@@ -8,7 +8,7 @@
     {% block stylesheets %}
         <link href="{{ asset("css/bootstrap-responsive.min.css") }}" rel="stylesheet" media="screen" />
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" media="screen" />
-        {% stylesheets output='css/compiled/main.css' filter='cssrewrite,yui_css'               
+        {% stylesheets output='css/compiled/common.css' filter='cssrewrite,yui_css'               
                 "css/main.css"
         %}
             
@@ -39,8 +39,8 @@
   {% block footer %}
   {% endblock %}
   {% block javascripts %}
-     {% javascripts output='js/compiled/main.js' filter='yui_js' 
-            'js/common.js'
+     {% javascripts output='js/compiled/common.js' filter='yui_js' 
+            'js/main.js'
      %}
 
         <script src="{{ asset_url }}"></script>

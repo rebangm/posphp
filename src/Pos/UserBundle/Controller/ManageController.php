@@ -35,22 +35,32 @@ class ManageController extends Controller
 
     public function setActiveAction($id, $active)
     {
-        $em   = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('PosUserBundle:User')->find($id);
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            if ( $this->container->get('request')->isXmlHttpRequest() ) {
+                $em   = $this->getDoctrine()->getManager();
+                $user = $em->getRepository('PosUserBundle:User')->find($id);
 
-        if ( !$user ) {
-            $status  = 'error';
-            $message = 'Aucun utilisateur trouvé pour cet id : ' . $id;
+                if ( !$user ) {
+                    $status  = 'error';
+                    $message = 'Aucun utilisateur trouvé pour cet id : ' . $id;
+                } else {
+                    $user->setIsActive($active);
+                    $em->flush();
+                    $status  = 'success';
+                    $message = array(
+                        'id'     => $id,
+                        'active' => $active,
+                        'url'    => $this->generateUrl('pos_user_manage_ajax_active',
+                                                       array( 'id'     => $id, 'active' => ( int ) !$active )) );
+                }
+            } else {
+                $status  = 'error';
+                $message = 'Not an ajax request.';
+            }
         } else {
-            $user->setIsActive($active);
-            $em->flush();
-            $status  = 'success';
-            $message = array(
-                'id'  => $id,
-                'active' => $active,
-                'url' => $this->generateUrl('pos_user_manage_ajax_active',array( 'id'=> $id, 'active' => ( int ) !$active )));
+            $status  = 'error';
+            $message = 'Unauthorized action for your role.';
         }
-
         return new JsonResponse(array( 'status'  => $status, 'message' => $message ));
     }
 
