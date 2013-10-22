@@ -2,7 +2,7 @@
  
 {% block content %}
  
-    <h3>user : {{user.id}}</h3>
+    {#<h3>user : {{user.id}}</h3>#}
 
     <div class="content-error">
         {% for key, flashMessages in app.session.FlashBag.all() %}
@@ -14,12 +14,13 @@
         {% endfor %}
         
     </div>
-    <div class="content-error">
-        {{user.id}}
-        
-        {% for attribute in user %}
-            {{attribute}}
-        {% endfor %}
+    <div class="form">
+       <form action="{{ path('pos_user_manage_edit', {'id': id }) }}" {{ form_enctype(form) }} method="POST">
+            {{ form_widget(form) }}
+            <input type="submit" class="btn btn-primary" />
+            
+            
+        </form>
     </div>
  
 {% endblock %}

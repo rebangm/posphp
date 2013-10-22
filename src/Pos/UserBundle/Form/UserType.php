@@ -17,9 +17,19 @@ class UserType extends AbstractType
             ->add('salt')
             ->add('password')
             ->add('phoneNumber')
-            ->add('roles')
-            ->add('isActive')
+            ->add('roles','collection', 
+                array('type'   => 'choice',
+                    'options'  => array(
+                    'choices'  => array(
+                        'ROLE_USER'         => 'ROLE_USER',
+                        'ROLE_ADMIN'        => 'ROLE_ADMIN',
+                        'ROLE_SUPERADMIN'   => 'ROLE_SUPERADMIN',
+                    ),
+                ),
+            ))
+            ->add('isActive', 'checkbox', array ('required' => false))
         ;
+ 
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

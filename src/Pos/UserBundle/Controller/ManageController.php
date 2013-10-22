@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Pos\UserBundle\Entity\User;
+use Pos\UserBundle\Form\UserType;
+use Pos\UserBundle\Form\UserEditType;
 
 class ManageController extends Controller
 {
@@ -35,7 +37,7 @@ class ManageController extends Controller
 
     public function setActiveAction($id, $active)
     {
-        if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+        if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
             if ( $this->container->get('request')->isXmlHttpRequest() ) {
                 $em   = $this->getDoctrine()->getManager();
                 $user = $em->getRepository('PosUserBundle:User')->find($id);
@@ -66,14 +68,33 @@ class ManageController extends Controller
 
     public function editAction($id)
     {
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('PosUserBundle:User');
+        if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
+            $request = $this->get('request');
 
-        $user = $repository->findOneById($id);
+            $repository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('PosUserBundle:User');
 
-        return $this->render('PosUserBundle:Manage:edit.html.twig',
-                             array( 'user' => $user ));
+            $user = $repository->findOneById($id);
+            $form = $this->createForm(new UserEditType, $user);            
+            if ( $request->getMethod() == 'POST' ) {             
+                $form->bind($request);
+                if ( $form->isValid() ) {
+                    $role = $form->get('roles')->getData();
+                    //var_dump($role);
+                    $user->setRoles($role);
+                    //var_dump($user);
+                    $em   = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('pos_user_manage'));
+                }
+            }
+
+            return $this->render('PosUserBundle:Manage:edit.html.twig',
+                                 array( 'form' => $form->createView(), 'id'   => $id ));
+        }
     }
 
 }
