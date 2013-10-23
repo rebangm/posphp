@@ -9,9 +9,16 @@ use Pos\UserBundle\Entity\User;
 use Pos\UserBundle\Form\UserType;
 use Pos\UserBundle\Form\UserEditType;
 
+/**
+ * Class ManageController
+ * @package Pos\UserBundle\Controller
+ */
 class ManageController extends Controller
 {
-
+    /**
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function indexAction($page)
     {
         if ( $page < 1 ) {
@@ -21,20 +28,26 @@ class ManageController extends Controller
                                                       array( 'page' => 1 )));
         }
 
-        $limit  = 20;
-        $offset = ($page - 1) * 20;
+        $limit  = 10;
+        $offset = ($page - 1) * 10;
 
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('PosUserBundle:User');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
+        $repository->
 
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'page'  => $page,
                 'users' => $listUsers ));
     }
 
+    /**
+     * @param $id
+     * @param $active
+     * @return JsonResponse
+     */
     public function setActiveAction($id, $active)
     {
         if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
@@ -66,6 +79,10 @@ class ManageController extends Controller
         return new JsonResponse(array( 'status'  => $status, 'message' => $message ));
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function editAction($id)
     {
         if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
