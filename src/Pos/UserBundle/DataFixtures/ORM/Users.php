@@ -24,7 +24,16 @@ class Users implements FixtureInterface, ContainerAwareInterface
     {
 
         // Les noms d'utilisateurs à créer
-        $noms = array( 'jpdepigny' => array('Jean-Philippe','Dépigny','jpdepigny'), 'esage' => array('Elodie','Sage','esage'), 'edepigny' => array('Elise','Dépigny','edepigny'));
+        $noms = array( 'jpdepigny' => array('Jean-Philippe','Dépigny'), 'esage' => array('Elodie','Sage'),
+            'edepigny' => array('Elise','Dépigny'),
+            'ngrevet' => array('Nicolas','Grevet'),
+            'gdievart' => array('Guillaume','Diévart'),
+            'mvial' => array('Michaël','Vial'),
+            'jpetit' => array('Jérémy','Petit'),
+            'rdagod' => array('Romain','Dagod'),
+            'ctofan' => array('Cristina','Tofan'),
+            'jdepigny' => array('Jean-Paul','Dépigny'),
+            'mhdepigny' => array('Marie-Hélène','Dépigny'));
 
         foreach ( $noms as $i => $nom )
         {
