@@ -3,7 +3,7 @@
 {% block content %}
 
     {% include "PosUserBundle::alert.html.twig" %}
-        
+
     <div class="form">
        <form action="{{ path('pos_user_manage_edit', {'id': id }) }}" {{ form_enctype(form) }} method="POST" novalidate="novalidate">
             {{ form_widget(form) }}
