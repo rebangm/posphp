@@ -27,7 +27,11 @@ class UserType extends AbstractType
                     ),
                 ),
             ))
-            ->add('isActive', 'checkbox', array ('required' => false))
+            ->add('isActive', 'checkbox', array (
+            		'label'=>'Utilisateur actif',
+            		'required' => false))
+            ->add('Enregistrer' , 'submit', array(
+    			'attr' => array('class' => 'btn btn-primary')))
         ;
  
     }

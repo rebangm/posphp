@@ -70,7 +70,8 @@ class ManageController extends Controller
     {
         if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
             $request = $this->get('request');
-
+            $session = $request->getSession();
+            
             $repository = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('PosUserBundle:User');
@@ -78,17 +79,17 @@ class ManageController extends Controller
             $user = $repository->findOneById($id);
             $form = $this->createForm(new UserEditType, $user);            
             if ( $request->getMethod() == 'POST' ) {             
-                $form->bind($request);
+                $form->handleRequest($request);
                 if ( $form->isValid() ) {
                     $role = $form->get('roles')->getData();
-                    //var_dump($role);
                     $user->setRoles($role);
-                    //var_dump($user);
                     $em   = $this->getDoctrine()->getManager();
                     $em->persist($user);
                     $em->flush();
-
+                    $session->getFlashBag()->add('success', 'Modification effectuée!');
                     return $this->redirect($this->generateUrl('pos_user_manage'));
+                }else{
+                    $session->getFlashBag()->add('error', 'Données du formulaire invalide.');
                 }
             }
 

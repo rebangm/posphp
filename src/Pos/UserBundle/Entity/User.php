@@ -5,6 +5,7 @@ namespace Pos\UserBundle\Entity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -27,6 +28,11 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=60)
+     * @Assert\Length(
+     *      min = "1",
+     *      max = "50",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères")
      */
     private $firstName;
 
@@ -34,6 +40,11 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=60)
+     * @Assert\Length(
+     *      min = "1",
+     *      max = "50",
+     *      minMessage = "Votre prénom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères")
      */
     private $lastName;
 
@@ -41,6 +52,12 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=50, unique=true)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "50",
+     *      minMessage = "Votre login doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre login ne peut pas être plus long que {{ limit }} caractères")
+     * @Assert\NotBlank()
      */
     private $username;
     
@@ -48,6 +65,7 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=40)
+     * @Assert\NotBlank()
      */
     private $salt;
     
@@ -55,6 +73,7 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=80)
+     * @Assert\NotBlank()
      */
     private $password;
 
