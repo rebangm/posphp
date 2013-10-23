@@ -2,7 +2,7 @@
  
 {% block content %}
  
-    <h3>welcome to manage user {{page}}</h3>
+    <h3>welcome to manage user</h3>
 
     {% include "PosUserBundle::alert.html.twig" %}
 
@@ -29,5 +29,6 @@
         </tbody>
     </table>
  
+    {% include "PosUserBundle::pagination.html.twig" %}
 {% endblock %}
 

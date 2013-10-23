@@ -12,5 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * 
+     * @return type
+     */
+    public function getTotalCount()
+    {
+        // Méthode équivalente, mais plus longue :
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('count(u.id)')
+            ->from($this->_entityName, 'u');
+
+        $resultats = $queryBuilder->getQuery()->getSingleScalarResult();
+        return $resultats;
+    }
 
 }

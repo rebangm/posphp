@@ -28,19 +28,25 @@ class ManageController extends Controller
                                                       array( 'page' => 1 )));
         }
 
-        $limit  = 10;
-        $offset = ($page - 1) * 10;
+        $limit  = 5;
+        $offset = ($page - 1) * $limit;
 
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('PosUserBundle:User');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
-        $repository->
-
+        $totalOfUsers = $repository->getTotalCount();        
+        $pagination = array('nbPage' => ceil((int)$totalOfUsers/$limit),
+                            'prev' => $page - 1,
+                            'next' => $page + 1,
+                            'page'  => $page);
+        
         return $this->render('PosUserBundle:Manage:manage.html.twig',
-                             array( 'page'  => $page,
-                'users' => $listUsers ));
+                             array( 'users' => $listUsers,
+                                    'totalUsers' => $totalOfUsers,
+                                    'pagination' => $pagination
+                                 ));
     }
 
     /**
