@@ -36,15 +36,15 @@ class ManageController extends Controller
             ->getRepository('PosUserBundle:User');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
-        $totalOfUsers = $repository->getTotalCount();        
-        $pagination = array('nbPage' => ceil((int)$totalOfUsers/$limit),
+        $totalRows = $repository->getTotalCount();        
+        $pagination = array('nbPage' => ceil((int)$totalRows/$limit),
                             'prev' => $page - 1,
                             'next' => $page + 1,
-                            'page'  => $page);
+                            'page'  => $page,
+                            'totalRows' => $totalRows);
         
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'users' => $listUsers,
-                                    'totalUsers' => $totalOfUsers,
                                     'pagination' => $pagination
                                  ));
     }
@@ -121,4 +121,7 @@ class ManageController extends Controller
         }
     }
 
+
 }
+
+
