@@ -100,6 +100,13 @@ class User implements AdvancedUserInterface
      */
     private $isActive = True;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=120)
+     */
+    private $mail;
+    
     
     /**
      * Construct
@@ -329,5 +336,28 @@ class User implements AdvancedUserInterface
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     * @return User
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string 
+     */
+    public function getMail()
+    {
+        return $this->mail;
     }
 }
