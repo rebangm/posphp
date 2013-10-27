@@ -122,6 +122,38 @@ class ManageController extends Controller
     }
 
 
+    public function addAction()
+    {
+        if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
+            $request = $this->get('request');
+            $session = $request->getSession();
+
+            $repository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('PosUserBundle:User');
+
+            $user = $repository->findOneById($id);
+
+            $form = $this->createForm(new UserType, $user);
+            if ( $request->getMethod() == 'POST' ) {
+                $form->handleRequest($request);
+                if ( $form->isValid() ) {
+                    $role = $form->get('roles')->getData();
+                    $user->setRoles($role);
+                    $em   = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                    $session->getFlashBag()->add('success', 'Utilisateur ajouté!');
+                    return $this->redirect($this->generateUrl('pos_user_manage'));
+                }else{
+                    $session->getFlashBag()->add('error', 'Données du formulaire invalide.');
+                }
+            }
+
+            return $this->render('PosUserBundle:Manage:add.html.twig',
+                array( 'form' => $form->createView() ));
+        }
+    }
 }
 
 

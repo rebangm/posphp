@@ -18,3 +18,9 @@
         <script type="text/javascript" src="{{ asset_url }}" /></script>
     {% endstylesheets %}
 {% endblock %}
+
+{% block leftmenu %}
+    <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('pos_user_manage_adduser') }}">Ajouter un utilisateur</a></li>
+    </ul>
+{% endblock %}

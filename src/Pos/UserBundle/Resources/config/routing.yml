@@ -32,3 +32,7 @@ pos_user_manage_edit:
     defaults: { _controller: PosUserBundle:Manage:edit }
     requirements: 
         page: \d+
+
+pos_user_manage_adduser:
+    pattern:   /user/manage/add/
+    defaults: { _controller: PosUserBundle:Manage:add }
