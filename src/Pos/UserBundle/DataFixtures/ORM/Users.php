@@ -48,6 +48,7 @@ class Users implements FixtureInterface, ContainerAwareInterface
             
             $users[$i]->setFirstName($nom[0]);
             $users[$i]->setLastName($nom[1]);
+            $users[$i]->setMail($i.'@posphp.com');
             //$users[$i]->set($nom);
             // Le sel et les rôles sont vides pour l'instant
             $users[$i]->setRoles(array( 'ROLE_USER' ));

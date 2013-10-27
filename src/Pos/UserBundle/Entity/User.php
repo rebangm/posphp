@@ -104,6 +104,7 @@ class User implements AdvancedUserInterface
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=120)
+     * @Assert\Email(message="Adresse mail invalide")
      */
     private $mail;
     
