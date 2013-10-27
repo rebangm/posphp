@@ -15,6 +15,7 @@ use Pos\UserBundle\Form\UserEditType;
  */
 class ManageController extends Controller
 {
+
     /**
      * @param $page
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -36,17 +37,17 @@ class ManageController extends Controller
             ->getRepository('PosUserBundle:User');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
-        $totalRows = $repository->getTotalCount();        
-        $pagination = array('nbPage' => ceil((int)$totalRows/$limit),
-                            'prev' => $page - 1,
-                            'next' => $page + 1,
-                            'page'  => $page,
-                            'totalRows' => $totalRows);
-        
+        $totalRows  = $repository->getTotalCount();
+        $pagination = array( 'nbPage'    => ceil(( int ) $totalRows / $limit),
+            'prev'      => $page - 1,
+            'next'      => $page + 1,
+            'page'      => $page,
+            'totalRows' => $totalRows );
+
         return $this->render('PosUserBundle:Manage:manage.html.twig',
-                             array( 'users' => $listUsers,
-                                    'pagination' => $pagination
-                                 ));
+                             array( 'users'      => $listUsers,
+                'pagination' => $pagination
+            ));
     }
 
     /**
@@ -94,47 +95,13 @@ class ManageController extends Controller
         if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
             $request = $this->get('request');
             $session = $request->getSession();
-            
-            $repository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('PosUserBundle:User');
-
-            $user = $repository->findOneById($id);
-            $form = $this->createForm(new UserEditType, $user);            
-            if ( $request->getMethod() == 'POST' ) {             
-                $form->handleRequest($request);
-                if ( $form->isValid() ) {
-                    $role = $form->get('roles')->getData();
-                    $user->setRoles($role);
-                    $em   = $this->getDoctrine()->getManager();
-                    $em->persist($user);
-                    $em->flush();
-                    $session->getFlashBag()->add('success', 'Modification effectuée!');
-                    return $this->redirect($this->generateUrl('pos_user_manage'));
-                }else{
-                    $session->getFlashBag()->add('error', 'Données du formulaire invalide.');
-                }
-            }
-
-            return $this->render('PosUserBundle:Manage:edit.html.twig',
-                                 array( 'form' => $form->createView(), 'id'   => $id ));
-        }
-    }
-
-
-    public function addAction()
-    {
-        if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
-            $request = $this->get('request');
-            $session = $request->getSession();
 
             $repository = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('PosUserBundle:User');
 
             $user = $repository->findOneById($id);
-
-            $form = $this->createForm(new UserType, $user);
+            $form = $this->createForm(new UserEditType, $user);
             if ( $request->getMethod() == 'POST' ) {
                 $form->handleRequest($request);
                 if ( $form->isValid() ) {
@@ -143,17 +110,55 @@ class ManageController extends Controller
                     $em   = $this->getDoctrine()->getManager();
                     $em->persist($user);
                     $em->flush();
-                    $session->getFlashBag()->add('success', 'Utilisateur ajouté!');
+                    $session->getFlashBag()->add('success',
+                                                 'Modification effectuée!');
                     return $this->redirect($this->generateUrl('pos_user_manage'));
-                }else{
-                    $session->getFlashBag()->add('error', 'Données du formulaire invalide.');
+                } else {
+                    $session->getFlashBag()->add('error',
+                                                 'Données du formulaire invalide.');
+                }
+            }
+
+            return $this->render('PosUserBundle:Manage:edit.html.twig',
+                                 array( 'form' => $form->createView(), 'id'   => $id ));
+        }
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function addAction()
+    {
+        if ( $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
+            $request = $this->get('request');
+            $session = $request->getSession();
+
+            $user = new User();
+
+            $form = $this->createForm(new UserType, $user);
+            if ( $request->getMethod() == 'POST' ) {
+                $form->handleRequest($request);
+                if ( $form->isValid() ) {
+
+                    $role = $form->get('roles')->getData();
+                    $user->setRoles($role);
+                    $em   = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                    $session->getFlashBag()->add('success', 'Utilisateur créé!');
+                    return $this->redirect($this->generateUrl('pos_user_manage'));
+                } else {
+                    //$form->
+                    $session->getFlashBag()->add('error',
+                                                 'Données du formulaire invalide. ');
                 }
             }
 
             return $this->render('PosUserBundle:Manage:add.html.twig',
-                array( 'form' => $form->createView() ));
+                                 array( 'form' => $form->createView() ));
         }
     }
-}
 
+}
 
