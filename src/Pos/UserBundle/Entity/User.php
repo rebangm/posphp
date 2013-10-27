@@ -6,12 +6,14 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Pos\UserBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="username", message="Login déjà utilisé")
  */
 class User implements AdvancedUserInterface
 {
