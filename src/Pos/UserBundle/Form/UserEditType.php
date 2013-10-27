@@ -12,7 +12,6 @@ class UserEditType extends UserType
     {        
         parent::buildForm($builder, $options);
         $builder
-            ->remove('salt')
             ->remove('password')
             ->add('roles', 'choice', array('choices' =>
                 array(
@@ -23,7 +22,6 @@ class UserEditType extends UserType
                 'required'  => true,
                 'multiple' => false
             ));
-        //$builder->add('password','password',array('always_empty' => true));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

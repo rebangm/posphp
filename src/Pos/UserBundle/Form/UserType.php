@@ -14,19 +14,21 @@ class UserType extends AbstractType
             ->add('firstName')
             ->add('lastName')
             ->add('username')
-            ->add('salt')
-            ->add('password')
+            ->remove('salt')
+            ->add('password', 'repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Les mots de passe doivent correspondre',
+                'options' => array('required' => true),
+                'first_options'  => array('label' => 'Mot de passe'),
+                'second_options' => array('label' => 'Mot de passe (validation)')))
             ->add('phoneNumber')
-            ->add('roles','collection', 
-                array('type'   => 'choice',
-                    'options'  => array(
-                    'choices'  => array(
+            ->add('roles','choice', array('choices' => array(
                         'ROLE_USER'         => 'ROLE_USER',
                         'ROLE_ADMIN'        => 'ROLE_ADMIN',
                         'ROLE_SUPERADMIN'   => 'ROLE_SUPERADMIN',
                     ),
-                ),
-            ))
+                'required'  => true,
+                'multiple' => false))
             ->add('isActive', 'checkbox', array (
             		'label'=>'Utilisateur actif',
             		'required' => false))
