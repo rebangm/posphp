@@ -1,0 +1,38 @@
+pos_user_login:
+    pattern:  /login
+    defaults: { _controller: PosUserBundle:Security:login }
+ 
+pos_user_login_check:
+    pattern:   /login_check
+ 
+pos_user_logout:
+    pattern:   /logout
+
+pos_user_manage:
+    pattern:   /user/manage/
+    defaults: { _controller: PosUserBundle:Manage:index, page : 1 }
+    requirements: 
+        page: \d+
+
+pos_user_manage_list:
+    pattern:   /user/manage/page/{page}
+    defaults: { _controller: PosUserBundle:Manage:index, page : 1 }
+    requirements: 
+        page: \d+
+
+pos_user_manage_ajax_active:
+    pattern:   /user/manage/ajax/active/id/{id}/{active}
+    defaults: { _controller: PosUserBundle:Manage:setActive, id, active }
+    requirements: 
+        id: \d+
+        active: 0|1
+
+pos_user_manage_edit:
+    pattern:   /user/manage/edit/{id}
+    defaults: { _controller: PosUserBundle:Manage:edit }
+    requirements: 
+        page: \d+
+
+pos_user_manage_adduser:
+    pattern:   /user/manage/add/
+    defaults: { _controller: PosUserBundle:Manage:add }

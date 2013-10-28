@@ -9,8 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CustomerController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
-     * @Template()
+     * 
      */
     public function indexAction($name)
     {

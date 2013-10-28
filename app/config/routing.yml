@@ -1,6 +1,5 @@
 pos_customer:
-    resource: "@PosCustomerBundle/Controller/"
-    type:     annotation
+    resource: "@PosCustomerBundle/Resources/config/routing.yml"
     prefix:   /
 
 pos_home:
