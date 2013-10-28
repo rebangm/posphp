@@ -1,6 +1,5 @@
 <?php
 
-// src/Sdz/UserBundle/DataFixtures/ORM/Users.php
 
 namespace Pos\UserBundle\DataFixtures\ORM;
 
@@ -24,7 +23,9 @@ class Users implements FixtureInterface, ContainerAwareInterface
     {
 
         // Les noms d'utilisateurs à créer
-        $noms = array( 'jpdepigny' => array('Jean-Philippe','Dépigny'), 'esage' => array('Elodie','Sage'),
+        $noms = array( 
+            'jpdepigny' => array('Jean-Philippe','Dépigny'), 
+            'esage' => array('Elodie','Sage'),
             'edepigny' => array('Elise','Dépigny'),
             'ngrevet' => array('Nicolas','Grevet'),
             'gdievart' => array('Guillaume','Diévart'),

@@ -1,6 +1,5 @@
 <?php
 
-// src/Sdz/UserBundle/DataFixtures/ORM/Users.php
 
 namespace Pos\CustomerBundle\DataFixtures\ORM;
 
