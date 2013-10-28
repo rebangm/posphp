@@ -15,8 +15,8 @@ class CustomerRepository extends EntityRepository
     public function getTotalCount()
     {
         $queryBuilder = $this->_em->createQueryBuilder()
-            ->select('count(u.id)')
-            ->from($this->_entityName, 'u');
+            ->select('count(c.id)')
+            ->from($this->_entityName, 'c');
 
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
