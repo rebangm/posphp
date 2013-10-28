@@ -1,0 +1,14 @@
+{% extends "PosUserBundle::user.html.twig" %}
+ 
+{% block content %}
+
+    {% include "PosUserBundle::alert.html.twig" %}
+
+    <div class="form">
+       <form action="{{ path('pos_user_manage_adduser') }}" {{ form_enctype(form) }} method="POST" novalidate="novalidate">
+            {{ form_widget(form) }}
+        </form>
+    </div>
+ 
+{% endblock %}
+

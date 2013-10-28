@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+
+    {{parent() }}
+    {%stylesheets output='css/compiled/user.css' filter='cssrewrite'               
+                "bundles/posuser/css/*"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent() }}
+    {%stylesheets output='js/compiled/user.js'               
+                "bundles/posuser/js/*"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}" /></script>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block leftmenu %}
+    <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('pos_user_manage') }}">Liste des utilisateurs</a></li>
+            <li><a href="{{ path('pos_user_manage_adduser') }}">Ajouter un utilisateur</a></li>
+    </ul>
+{% endblock %}
