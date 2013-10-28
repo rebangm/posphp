@@ -5,8 +5,12 @@ namespace Pos\CustomerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Pos\CostumerBundle\Entity\Costumer;
+use Pos\CustomerBundle\Entity\Customer;
 
+/**
+ * Class ManageController
+ * @package Pos\CustomerBundle\Controller
+ */
 class ManageController extends Controller
 {
     
@@ -24,7 +28,7 @@ class ManageController extends Controller
 
         $repository = $this->getDoctrine()
             ->getManager()
-            ->getRepository('PosCostumerBundle:Customer');
+            ->getRepository('PosCustomerBundle:Customer');
 
         $listCustomers = $repository->findBy(array( ), array( ), $limit, $offset);
         $totalRows  = $repository->getTotalCount();
@@ -34,7 +38,7 @@ class ManageController extends Controller
             'page'      => $page,
             'totalRows' => $totalRows );
 
-        return $this->render('PosCostumerBundle:Manage:manage.html.twig',
+        return $this->render('PosCustomerBundle:Manage:manage.html.twig',
                              array( 'customers'      => $listCustomers,
                 'pagination' => $pagination
             ));

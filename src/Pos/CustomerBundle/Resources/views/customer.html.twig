@@ -4,7 +4,7 @@
 
     {{parent() }}
     {%stylesheets output='css/compiled/user.css' filter='cssrewrite'               
-                "bundles/posuser/css/*"
+                "bundles/poscustomer/css/*"
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -13,7 +13,7 @@
 {% block javascripts %}
     {{parent() }}
     {%stylesheets output='js/compiled/user.js'               
-                "bundles/posuser/js/*"
+                "bundles/poscustomer/js/*"
     %}
         <script type="text/javascript" src="{{ asset_url }}" /></script>
     {% endstylesheets %}
@@ -21,7 +21,7 @@
 
 {% block leftmenu %}
     <ul class="nav nav-pills nav-stacked">
-            <li><a href="{{ path('pos_user_manage') }}">Liste des utilisateurs</a></li>
-            <li><a href="{{ path('pos_user_manage_adduser') }}">Ajouter un utilisateur</a></li>
+            <li><a href="{{ path('pos_customer_manage') }}">Liste des clients</a></li>
+            {#<li><a href="{{ path('pos_user_manage_adduser') }}">Ajouter un utilisateur</a></li>#}
     </ul>
 {% endblock %}

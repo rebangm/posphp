@@ -23,28 +23,17 @@ class Customers implements FixtureInterface, ContainerAwareInterface
     {
 
         // Les noms d'utilisateurs à créer
-        $noms = array( 
-            'Customer1' => array('Jean-Philippe','Dépigny'), 
-            'esage' => array('Elodie','Sage'),
-            'edepigny' => array('Elise','Dépigny'),
-            'ngrevet' => array('Nicolas','Grevet'),
-            'gdievart' => array('Guillaume','Diévart'),
-            'mvial' => array('Michaël','Vial'),
-            'jpetit' => array('Jérémy','Petit'),
-            'rdagod' => array('Romain','Dagod'),
-            'ctofan' => array('Cristina','Tofan'),
-            'jdepigny' => array('Jean-Paul','Dépigny'),
-            'mhdepigny' => array('Marie-Hélène','Dépigny')
-            );
+        $nom = 'Client';
 
-        foreach ( $noms as $i => $nom )
+        $i=1;
+        for($i ; $i <= 16 ; $i++ )
         {
             // On crée l'utilisateur
             $customers[$i] = new Customer;
                        
-            $customers[$i]->setFirstName($nom[0]);
-            $customers[$i]->setLastName($nom[1]);
-            $customers[$i]->setMail($i.'@customer.com');
+            $customers[$i]->setFirstName($nom . 'Prenom' . $i);
+            $customers[$i]->setLastName($nom . 'Nom' . $i);
+            $customers[$i]->setMail('Client' . $i.'@customer.com');
             $manager->persist($customers[$i]);
         }
 

@@ -9,3 +9,15 @@ pos_customer_manage_list:
     defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }
     requirements: 
         page: \d+
+        
+pos_customer_manage_edit:
+    pattern:   /customer/manage/edit/
+    defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }
+    requirements: 
+        page: \d+
+
+pos_customer_manage_view:
+    pattern:   /customer/manage/view/
+    defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }
+    requirements: 
+        page: \d+
