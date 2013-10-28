@@ -45,19 +45,6 @@ class Customer
      *      maxMessage = "Votre prénom ne peut pas être plus long que {{ limit }} caractères")
      */
     private $lastName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_name", type="string", length=50, unique=true)
-     * @Assert\Length(
-     *      min = "5",
-     *      max = "50",
-     *      minMessage = "Votre login doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre login ne peut pas être plus long que {{ limit }} caractères")
-     * @Assert\NotBlank()
-     */
-    private $username;
   
     /**
      * @var string
@@ -65,7 +52,6 @@ class Customer
      * @ORM\Column(name="phone_number", type="string", length=16, nullable=true)
      */
     private $phoneNumber;
-    
         
     /**
      * @var string
@@ -83,5 +69,97 @@ class Customer
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return Customer
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return Customer
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set phoneNumber
+     *
+     * @param string $phoneNumber
+     * @return Customer
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    
+        return $this;
+    }
+
+    /**
+     * Get phoneNumber
+     *
+     * @return string 
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     * @return Customer
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string 
+     */
+    public function getMail()
+    {
+        return $this->mail;
     }
 }

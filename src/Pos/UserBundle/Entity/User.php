@@ -53,7 +53,7 @@ class User implements AdvancedUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=50, unique=true)
+     * @ORM\Column(name="user_name", type="string", length=50, unique=true)
      * @Assert\Length(
      *      min = "5",
      *      max = "50",
