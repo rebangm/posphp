@@ -1,5 +1,7 @@
 
 {% if pagination %}
+
+    {#
     <div class="pagination pagination-centered">
       <ul>
         {% for i in 1..pagination.nbPage %}
@@ -27,4 +29,6 @@
         {% endfor %}
       </ul>
     </div>
+    #}
+    {{ knp_pagination_render(pagination) }}
 {% endif %}

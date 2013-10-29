@@ -22,10 +22,10 @@ class ManageController extends Controller
      */
     public function indexAction($page)
     {
+        /*
         $paginator = $this->container->get('pos_paginator.pagination');
-        var_dump($paginator);
         $pagination = $paginator->pagination($page, 5, 16, 'test');
-        var_dump($pagination);
+        */
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
@@ -35,21 +35,30 @@ class ManageController extends Controller
 
         $limit  = 5;
         $offset = ($page - 1) * $limit;
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('PosUserBundle:User');
 
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('PosUserBundle:User');
+        $dql   = "SELECT a FROM PosUserBundle:User a Order by a.id";
+        $query = $em->createQuery($dql);
 
-
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
+        $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig');
+        $pagination->setUsedRoute('pos_user_manage_list');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
         $totalRows  = $repository->getTotalCount();
+        /*
         $pagination = array( 'nbPage'    => ceil(( int ) $totalRows / $limit),
             'prev'      => $page - 1,
             'next'      => $page + 1,
             'page'      => $page,
             'totalRows' => $totalRows );
-
+        */
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'users'      => $listUsers,
                 'pagination' => $pagination
