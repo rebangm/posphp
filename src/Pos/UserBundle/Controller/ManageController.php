@@ -22,10 +22,8 @@ class ManageController extends Controller
      */
     public function indexAction($page)
     {
-        /*
-        $paginator = $this->container->get('pos_paginator.pagination');
-        $pagination = $paginator->pagination($page, 5, 16, 'test');
-        */
+        var_dump($this->get('request')->query->get('limit',5));
+        var_dump($this->get('request')->query->get('order','id'));
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
@@ -38,6 +36,7 @@ class ManageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('PosUserBundle:User');
 
+        $authorizedColumns = array('id','firstname','lastname','');
         $dql   = "SELECT a FROM PosUserBundle:User a Order by a.id";
         $query = $em->createQuery($dql);
 
@@ -48,6 +47,7 @@ class ManageController extends Controller
             $limit
         );
         $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig');
+        //$pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
         $pagination->setUsedRoute('pos_user_manage_list');
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
