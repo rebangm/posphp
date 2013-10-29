@@ -1,0 +1,11 @@
+parameters:
+    pos_paginator.class: Pos\PaginatorBundle\Pagination\Pagination
+
+services:
+    pos_paginator.pagination:
+         class: %pos_paginator.class%
+ #       arguments: []
+ #   pos.twig.extension.paginator.pager:
+ #       class: Pos\PaginationBundle\Twig\Extension\PosPagerExtension
+ #       tags:
+ #         - { name: twig.extension }

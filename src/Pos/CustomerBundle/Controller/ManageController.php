@@ -32,15 +32,19 @@ class ManageController extends Controller
 
         $listCustomers = $repository->findBy(array( ), array( ), $limit, $offset);
         $totalRows  = $repository->getTotalCount();
-        $pagination = array( 'nbPage'    => ceil(( int ) $totalRows / $limit),
+
+        $pagination = array( 'active' => $totalRows / $limit >= 1 ? true : false,
+            'nbPage'    => ceil(( int ) $totalRows / $limit),
             'prev'      => $page - 1,
             'next'      => $page + 1,
             'page'      => $page,
-            'totalRows' => $totalRows );
+            'totalRows' => $totalRows,
+            'routing'   => 'pos_customer_manage_list'
+        );
 
         return $this->render('PosCustomerBundle:Manage:manage.html.twig',
                              array( 'customers'      => $listCustomers,
-                'pagination' => $pagination
+                                    'pagination' => $pagination
             ));
     }
 }

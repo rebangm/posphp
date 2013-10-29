@@ -22,6 +22,10 @@ class ManageController extends Controller
      */
     public function indexAction($page)
     {
+        $paginator = $this->container->get('pos_paginator.pagination');
+        var_dump($paginator);
+        $pagination = $paginator->pagination($page, 5, 16, 'test');
+        var_dump($pagination);
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
@@ -35,6 +39,8 @@ class ManageController extends Controller
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('PosUserBundle:User');
+
+
 
         $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
         $totalRows  = $repository->getTotalCount();

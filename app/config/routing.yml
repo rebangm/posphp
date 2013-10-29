@@ -1,3 +1,7 @@
+pos_paginator:
+    resource: "@PosPaginatorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 pos_customer:
     resource: "@PosCustomerBundle/Resources/config/routing.yml"
     prefix:   /
