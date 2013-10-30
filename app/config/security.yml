@@ -25,7 +25,7 @@ security:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
         user_db:
-            entity: { class: Pos\UserBundle\Entity\User, property: username }
+            entity: { class: Pos\UserBundle\Entity\User, property: userName }
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

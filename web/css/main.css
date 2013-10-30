@@ -18,8 +18,14 @@ body {
     padding-top: 10px;
     padding-right: 15px;
 }
-      
 
+.odd{
+    background-color: #DDD;
+}
+
+.even{
+
+}
 
 .signin {
   max-width: 300px;
