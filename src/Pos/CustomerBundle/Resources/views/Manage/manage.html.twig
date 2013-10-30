@@ -11,7 +11,7 @@
             <tr><td class="">id</td><td>Nom</td><td>Pr&eacute;nom</td><td>action</td></tr> 
         </thead>
         <tbody>
-            {% for customer in customers %}
+            {% for customer in pagination %}
                 <tr><td>{{customer.id}}</td>
                     <td>{{customer.lastname}}</td>
                     <td>{{customer.firstname}}</td>
@@ -23,7 +23,7 @@
             {% endfor %}
         </tbody>
     </table>
- 
-    {% include "PosCustomerBundle::pagination.html.twig" %}
+
+    {{ knp_pagination_render(pagination) }}
 {% endblock %}
 

@@ -24,27 +24,23 @@ class ManageController extends Controller
         }
 
         $limit  = 5;
-        $offset = ($page - 1) * $limit;
 
-        $repository = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('PosCustomerBundle:Customer');
+        $em = $this->getDoctrine()->getManager();
+        //$dql   = "SELECT a FROM PosUserBundle:User a ORDER BY a." . $order . " ASC";
+        $dql   = "SELECT c FROM PosCustomerBundle:Customer c ORDER BY c.id ASC";
 
-        $listCustomers = $repository->findBy(array( ), array( ), $limit, $offset);
-        $totalRows  = $repository->getTotalCount();
-
-        $pagination = array( 'active' => $totalRows / $limit >= 1 ? true : false,
-            'nbPage'    => ceil(( int ) $totalRows / $limit),
-            'prev'      => $page - 1,
-            'next'      => $page + 1,
-            'page'      => $page,
-            'totalRows' => $totalRows,
-            'routing'   => 'pos_customer_manage_list'
+        $query = $em->createQuery($dql);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
         );
 
+        $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
+        $pagination->setUsedRoute('pos_customer_manage_list');
+
         return $this->render('PosCustomerBundle:Manage:manage.html.twig',
-                             array( 'customers'      => $listCustomers,
-                                    'pagination' => $pagination
-            ));
+                             array('pagination' => $pagination ));
     }
 }
