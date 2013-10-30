@@ -5,6 +5,7 @@
 
 $(document).ready(function() {
     $('#user_manage_select_limit').on('change',function(evnt){
+        console.log('hello');
         location.href = $("option:selected",this).data('url');
     });
     $("#userTable button").on('click',function(event){

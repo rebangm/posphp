@@ -13,7 +13,7 @@ class UserType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('username')
+            ->add('userName')
             ->add('mail', 'email', array('max_length' => 120))
             ->remove('salt')
             ->add('password', 'repeated', array(

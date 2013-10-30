@@ -53,7 +53,7 @@ class ManageController extends Controller
         $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
         $pagination->setUsedRoute('pos_user_manage_list');
 
-        var_dump($limit);
+
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'limitOptions' => $this->limitOptions,
                                     'pagination' => $pagination
