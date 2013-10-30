@@ -2,10 +2,12 @@
 
 namespace Pos\CustomerBundle\Controller;
 
+use Pos\CustomerBundle\Form\CustomerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Pos\CustomerBundle\Entity\Customer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class ManageController
@@ -13,14 +15,17 @@ use Pos\CustomerBundle\Entity\Customer;
  */
 class ManageController extends Controller
 {
-    
+    /**
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function indexAction($page)
     {
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
             return $this->redirect($this->generateUrl('pos_customer_manage',
-                                                      array( 'page' => 1 )));
+                array( 'page' => 1 )));
         }
 
         $limit  = 5;
@@ -41,6 +46,40 @@ class ManageController extends Controller
         $pagination->setUsedRoute('pos_customer_manage_list');
 
         return $this->render('PosCustomerBundle:Manage:manage.html.twig',
-                             array('pagination' => $pagination ));
+            array('pagination' => $pagination ));
+    }
+
+    /**
+     * @param Customer $customer
+     * @ParamConverter("customer", options={"mapping": {"customer_id": "id"}})
+     */
+    public function editAction(Customer $customer){
+
+
+        $request = $this->get('request');
+        $session = $request->getSession();
+
+
+        $form = $this->createForm(new CustomerType(), $customer);
+        if ( $request->getMethod() == 'POST' ) {
+            $form->handleRequest($request);
+            if ( $form->isValid() ) {
+
+
+                $em   = $this->getDoctrine()->getManager();
+                $em->persist($customer);
+
+                $em->flush();
+                $session->getFlashBag()->add('success',
+                    'Modification effectuée!');
+                return $this->redirect($this->generateUrl('pos_customer_manage_list'));
+            } else {
+                $session->getFlashBag()->add('error',
+                    'Données du formulaire invalide.');
+            }
+        }
+
+        return $this->render('PosCustomerBundle:Manage:edit.html.twig',
+            array( 'form' => $form->createView(), 'id'   => $customer->getId() ));
     }
 }

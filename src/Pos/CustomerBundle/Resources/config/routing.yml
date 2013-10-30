@@ -11,8 +11,8 @@ pos_customer_manage_list:
         page: \d+
         
 pos_customer_manage_edit:
-    pattern:   /customer/manage/edit/
-    defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }
+    pattern:   /customer/manage/edit/{customer_id}
+    defaults: { _controller: PosCustomerBundle:Manage:edit, page : 1 }
     requirements: 
         page: \d+
 

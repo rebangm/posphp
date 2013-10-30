@@ -88,6 +88,13 @@ class Customer
      * @ORM\Column(name="zip_code", type="string", length=200, nullable=true)
      */
     private $zipCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bar_code", type="string", length=200, nullable=true)
+     */
+    private $barCode;
     
     /**
      * @var string
@@ -311,5 +318,28 @@ class Customer
     public function getChildBirthDate()
     {
         return $this->childBirthDate;
+    }
+
+    /**
+     * Set barCode
+     *
+     * @param string $barCode
+     * @return Customer
+     */
+    public function setBarCode($barCode)
+    {
+        $this->barCode = $barCode;
+    
+        return $this;
+    }
+
+    /**
+     * Get barCode
+     *
+     * @return string 
+     */
+    public function getBarCode()
+    {
+        return $this->barCode;
     }
 }
