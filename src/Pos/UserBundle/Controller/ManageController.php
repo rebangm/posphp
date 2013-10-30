@@ -17,7 +17,7 @@ class ManageController extends Controller
 {
     private $limitOptions = array(1,5,10,50);
 
-    private $authorizedColumns = array('id','firstname','lastname');
+    private $authorizedColumns = array('id','firstName','lastName','userName');
     /**
      * @param $page
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -27,8 +27,7 @@ class ManageController extends Controller
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
-            return $this->redirect($this->generateUrl('pos_user_manage',
-                                                      array( 'page' => 1 )));
+            return $this->redirect($this->generateUrl('pos_user_manage', array( 'page' => 1 )));
         }
 
         $limit  = (int)$this->container->get('request')->get('limit',5);
@@ -36,13 +35,13 @@ class ManageController extends Controller
             $limit = 5;
 
         $order  = $this->container->get('request')->get('order', 'id');
-        if(!in_array($limit,$this->limitOptions))
+        if(!in_array($order,$this->authorizedColumns))
             $order = 'id';
 
         $em = $this->getDoctrine()->getManager();
-        $dql   = "SELECT a FROM PosUserBundle:User a Order by a." . $order;
-        $query = $em->createQuery($dql);
+        $dql   = "SELECT a FROM PosUserBundle:User a ORDER BY a." . $order . " ASC";
 
+        $query = $em->createQuery($dql);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
