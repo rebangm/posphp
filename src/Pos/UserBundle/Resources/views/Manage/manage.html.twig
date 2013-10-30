@@ -5,10 +5,10 @@
     <h3>welcome to manage user</h3>
 
     {% include "PosUserBundle::alert.html.twig" %}
-
+{{ dump(app.request.query.all) }}
     <select id="user_manage_select_limit">
         {% for limit in limitOptions %}
-            <option value="{{ limit }}" {% if limit == pagination.params.limit %}selected{% endif %} data-url="{{ path('pos_user_manage_list', app.request.query.all|merge({'limit': limit })) }}">{{ limit }}</option>
+            <option value="{{ limit }}" {% if isset(pagination.params.limit) && limit == pagination.params.limit %}selected{% endif %} data-url="{{ path('pos_user_manage_list', app.request.query.all|merge({'limit': limit })) }}">{{ limit }}</option>
         {% endfor %}
     </select>
 

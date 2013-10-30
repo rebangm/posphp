@@ -34,6 +34,7 @@ class ManageController extends Controller
         if(!in_array($limit,$this->limitOptions))
             $limit = 5;
 
+
         $order  = $this->container->get('request')->get('order', 'id');
         if(!in_array($order,$this->authorizedColumns))
             $order = 'id';
@@ -52,6 +53,7 @@ class ManageController extends Controller
         $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
         $pagination->setUsedRoute('pos_user_manage_list');
 
+        var_dump($limit);
         return $this->render('PosUserBundle:Manage:manage.html.twig',
                              array( 'limitOptions' => $this->limitOptions,
                                     'pagination' => $pagination
