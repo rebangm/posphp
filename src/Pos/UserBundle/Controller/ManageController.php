@@ -15,15 +15,15 @@ use Pos\UserBundle\Form\UserEditType;
  */
 class ManageController extends Controller
 {
+    private $limitOptions = array(1,5,10,50);
 
+    private $authorizedColumns = array('id','firstname','lastname');
     /**
      * @param $page
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function indexAction($page)
     {
-        var_dump($this->get('request')->query->get('limit',5));
-        var_dump($this->get('request')->query->get('order','id'));
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
@@ -31,13 +31,16 @@ class ManageController extends Controller
                                                       array( 'page' => 1 )));
         }
 
-        $limit  = 5;
-        $offset = ($page - 1) * $limit;
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('PosUserBundle:User');
+        $limit  = (int)$this->container->get('request')->get('limit',5);
+        if(!in_array($limit,$this->limitOptions))
+            $limit = 5;
 
-        $authorizedColumns = array('id','firstname','lastname','');
-        $dql   = "SELECT a FROM PosUserBundle:User a Order by a.id";
+        $order  = $this->container->get('request')->get('order', 'id');
+        if(!in_array($limit,$this->limitOptions))
+            $order = 'id';
+
+        $em = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM PosUserBundle:User a Order by a." . $order;
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -46,22 +49,13 @@ class ManageController extends Controller
             $page,
             $limit
         );
-        $pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig');
-        //$pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
+        //$pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig');
+        $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
         $pagination->setUsedRoute('pos_user_manage_list');
 
-        $listUsers = $repository->findBy(array( ), array( ), $limit, $offset);
-        $totalRows  = $repository->getTotalCount();
-        /*
-        $pagination = array( 'nbPage'    => ceil(( int ) $totalRows / $limit),
-            'prev'      => $page - 1,
-            'next'      => $page + 1,
-            'page'      => $page,
-            'totalRows' => $totalRows );
-        */
         return $this->render('PosUserBundle:Manage:manage.html.twig',
-                             array( 'users'      => $listUsers,
-                'pagination' => $pagination
+                             array( 'limitOptions' => $this->limitOptions,
+                                    'pagination' => $pagination
             ));
     }
 
@@ -69,6 +63,7 @@ class ManageController extends Controller
      * @param $id
      * @param $active
      * @return JsonResponse
+     *
      */
     public function setActiveAction($id, $active)
     {

@@ -6,11 +6,10 @@
 
     {% include "PosUserBundle::alert.html.twig" %}
 
-    <select>
-        <option value="1"><a href="{{ path('pos_user_manage_list', {'limit': 1 }) }}">1</a></option>
-        <option value="5"><a href="{{ path('pos_user_manage_list', {'limit': 5 }) }}">5</a></option>
-        <option value="10"><a href="{{ path('pos_user_manage_list', {'limit': 10 }) }}">10</a></option>
-        <option value="50"><a href="{{ path('pos_user_manage_list', {'limit': 50 }) }}">50</a></option>
+    <select id="user_manage_select_limit">
+        {% for limit in limitOptions %}
+            <option value="{{ limit }}" {% if limit == pagination.params.limit %}selected{% endif %} data-url="{{ path('pos_user_manage_list', app.request.query.all|merge({'limit': limit })) }}">{{ limit }}</option>
+        {% endfor %}
     </select>
 
     <table id="userTable" class="table table-striped table-hover table-condensed">

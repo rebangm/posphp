@@ -1,7 +1,8 @@
 {# I:\opt\hosting\dev.pos.fr\current\vendor\knplabs\knp-paginator-bundle\Knp\Bundle\PaginatorBundle\Resources\views\Pagination\twitter_bootstrap_pagination.html.twig #}
 
-{% if pageCount > 1 %}
-    <ul class="pagination pagination-centered">
+
+    <div class="pagination pagination-centered">
+    <ul>
 
         {% if previous is defined %}
             <li>
@@ -68,4 +69,4 @@
             </li>
         {% endif %}
     </ul>
-{% endif %}
+    </div>
