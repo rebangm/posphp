@@ -61,7 +61,7 @@ class User implements AdvancedUserInterface
      *      maxMessage = "Votre login ne peut pas être plus long que {{ limit }} caractères")
      * @Assert\NotBlank()
      */
-    private $username;
+    private $userName;
     
     /**
      * @var string
@@ -299,9 +299,9 @@ class User implements AdvancedUserInterface
      * @param string $username
      * @return User
      */
-    public function setUsername($username)
+    public function setUserName($username)
     {
-        $this->username = $username;
+        $this->userName = $username;
     
         return $this;
     }
@@ -311,9 +311,9 @@ class User implements AdvancedUserInterface
      *
      * @return string 
      */
-    public function getUsername()
+    public function getUserName()
     {
-        return $this->username;
+        return $this->userName;
     }
 
     /**
