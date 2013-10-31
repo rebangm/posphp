@@ -30,7 +30,9 @@ class CustomerType extends AbstractType
                 'input'  => 'datetime',
                 'widget' => 'single_text',
                 'required' => false,
-            ))
+            )
+            ->add('clear','button', array(
+                'attr' => array('class' => 'btn btn-inverse')))
             ->add('Enregistrer' , 'submit', array(
                 'attr' => array('class' => 'btn btn-primary')))
         ;
