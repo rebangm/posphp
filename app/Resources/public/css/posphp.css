@@ -7,3 +7,9 @@
 */
 
 
+.textAndButton button {
+    position: relative;
+    top: -5px;
+    left: -10px;
+    border-radius: 0px 4px 4px 0;
+}
