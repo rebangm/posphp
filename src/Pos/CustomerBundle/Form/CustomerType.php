@@ -24,16 +24,23 @@ class CustomerType extends AbstractType
             ->add('city')
             ->add('zipCode')
             ->add('barCode')
-            ->add('Generate','button', array(
+            ->add('generate','button', array(
                 'attr' => array('class' => 'btn btn-inverse')))
             ->add('childBirthDate','date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
                 'required' => false,
+<<<<<<< HEAD
             )
             ->add('clear','button', array(
                 'attr' => array('class' => 'btn btn-inverse')))
             ->add('Enregistrer' , 'submit', array(
+=======
+            ))
+            ->add('clear','button', array(
+                'attr' => array('class' => 'btn btn-inverse')))
+            ->add('enregistrer' , 'submit', array(
+>>>>>>> 3fd8fff9d810802bc1536fdc0d90b0237076350c
                 'attr' => array('class' => 'btn btn-primary')))
         ;
     }

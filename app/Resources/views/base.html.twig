@@ -10,8 +10,9 @@
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" media="screen" />
         {% stylesheets output='css/compiled/common.css' filter='cssrewrite,yui_css'               
                 "css/main.css"
+                "../app/Resources/public/css/*"
         %}
-            
+
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets%}
     {% endblock %}

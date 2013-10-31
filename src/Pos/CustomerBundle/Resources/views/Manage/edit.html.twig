@@ -6,9 +6,33 @@
 
     <div class="form">
        <form action="{{ path('pos_customer_manage_edit', {'customer_id': id }) }}" {{ form_enctype(form) }} method="POST">
-            {{ form_widget(form) }}
+           {# {{ form_widget(form) }} #}
+           {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+
+           <fieldset>
+               {{ form_label(form.firstName) }}
+               {{ form_errors(form.firstName) }}
+               {{ form_widget(form.firstName) }}
+           </fieldset>
+           <fieldset>
+               {{ form_label(form.lastName) }}
+               {{ form_errors(form.lastName) }}
+               {{ form_widget(form.lastName) }}
+           </fieldset>
+
+           <fieldset class="textAndButton">
+               {{ form_label(form.barCode) }}
+               {{ form_errors(form.barCode) }}
+               {{ form_widget(form.barCode) }}
+
+               {{ form_widget(form.generate) }}
+           </fieldset>
+
+           {{ form_row(form.childBirthDate) }}
+
+           {{ form_rest(form) }}
         </form>
     </div>
- 
+
 {% endblock %}
 
