@@ -13,11 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Child
 {
-   /**
-   * @ORM\ManyToOne(targetEntity="Pos\CustomerBundle\Entity\Customer")
-   * @ORM\JoinColumn(nullable=false)
-   */
-    
+
+
     /**
      * @var integer
      *
@@ -51,20 +48,24 @@ class Child
      *      maxMessage = "le prénom ne peut pas être plus long que {{ limit }} caractères")
      */
     private $lastName;
-    
+
     /**
      * @var string
      * @ORM\Column(name="birth_date", type="date")
      * @Assert\Date()
      */
     private $birthDate;
-    
-    
-    
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Pos\CustomerBundle\Entity\Customer", inversedBy="children")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,14 +81,14 @@ class Child
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
-    
+
         return $this;
     }
 
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -103,14 +104,14 @@ class Child
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-    
+
         return $this;
     }
 
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -126,17 +127,40 @@ class Child
     public function setBirthDate($birthDate)
     {
         $this->birthDate = $birthDate;
-    
+
         return $this;
     }
 
     /**
      * Get birthDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthDate()
     {
         return $this->birthDate;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Pos\CustomerBundle\Entity\Customer $customer
+     * @return Child
+     */
+    public function setCustomer(\Pos\CustomerBundle\Entity\Customer $customer)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Pos\CustomerBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }

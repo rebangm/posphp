@@ -30,7 +30,13 @@
 
            {{ form_row(form.childBirthDate) }}
 
+           <ul class="children" data-prototype="{{ form_widget(form.children.vars.prototype)|e }}">
+
+           </ul>
+
            {{ form_rest(form) }}
+
+
         </form>
     </div>
 

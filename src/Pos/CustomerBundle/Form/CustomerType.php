@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CustomerType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -27,24 +27,24 @@ class CustomerType extends AbstractType
             ->add('generate','button', array(
                 'attr' => array('class' => 'btn btn-inverse')))
             ->add('childBirthDate','date', array(
-                'input'  => 'datetime',
-                'widget' => 'single_text',
-                'required' => false,
-<<<<<<< HEAD
+                    'input'  => 'datetime',
+                    'widget' => 'single_text',
+                    'required' => false)
             )
-            ->add('clear','button', array(
-                'attr' => array('class' => 'btn btn-inverse')))
-            ->add('Enregistrer' , 'submit', array(
-=======
+            ->add('children', 'collection', array(
+                'type' => new ChildType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'required'     => false
             ))
             ->add('clear','button', array(
                 'attr' => array('class' => 'btn btn-inverse')))
-            ->add('enregistrer' , 'submit', array(
->>>>>>> 3fd8fff9d810802bc1536fdc0d90b0237076350c
+            ->add('Enregistrer' , 'submit', array(
                 'attr' => array('class' => 'btn btn-primary')))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

@@ -102,6 +102,11 @@ class Customer
      * @Assert\Date()
      */
     private $childBirthDate;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Pos\CustomerBundle\Entity\Child", mappedBy="customer")
+    */
+    private $children;
     
     /**
      * Get id
@@ -341,5 +346,48 @@ class Customer
     public function getBarCode()
     {
         return $this->barCode;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+   
+
+    /**
+     * Add children
+     *
+     * @param \Pos\CustomerBundle\Entity\Child $children
+     * @return Customer
+     */
+    public function addChildren(\Pos\CustomerBundle\Entity\Child $children)
+    {
+        $this->children[] = $children;
+        $children->setCustomer($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Pos\CustomerBundle\Entity\Child $children
+     */
+    public function removeChildren(\Pos\CustomerBundle\Entity\Child $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 }
