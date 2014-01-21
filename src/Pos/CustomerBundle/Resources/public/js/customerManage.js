@@ -20,13 +20,15 @@ function addTagFormDeleteLink($tagFormLi) {
 function addChildForm(collectionHolder, $newLinkLi) {
     // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
     var prototype = collectionHolder.attr('data-prototype');
-
+    console.log(prototype);
     // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
     // la longueur de la collection courante
-    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+    console.log(collectionHolder.children().length);
+    var newForm = prototype.replace(/__name__label__/g, collectionHolder.children().length).replace(/__name__/g, collectionHolder.children().length);
+
 
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
-    var $newFormLi = $('<li></li>').append(newForm);
+    var $newFormLi = $('<div></div>').append(newForm);
     $newLinkLi.before($newFormLi);
     addTagFormDeleteLink($newFormLi);
 }
@@ -37,13 +39,13 @@ $( document ).ready(function() {
 
 
     // Récupère le div qui contient la collection de tags
-    var collectionHolder = $('ul.children');
+    var collectionHolder = $('div.children');
 
     // ajoute un lien « add a tag »
     var $addTagLink = $('<a href="#" class="add_children_link">Ajouter un enfant</a>');
-    var $newLinkLi = $('<li></li>').append($addTagLink);
+    var $newLinkLi = $('<div></div>').append($addTagLink);
 
-    jQuery(document).ready(function() {
+    $(document).ready(function() {
         // ajoute l'ancre « ajouter un tag » et li à la balise ul
         collectionHolder.append($newLinkLi);
 

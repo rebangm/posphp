@@ -32,6 +32,7 @@ class CustomerType extends AbstractType
                     'required' => false)
             )
             ->add('children', 'collection', array(
+                'attr' => array('class' => 'children'),
                 'type' => new ChildType(),
                 'allow_add' => true,
                 'allow_delete' => true,

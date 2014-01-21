@@ -19,6 +19,14 @@ body {
     padding-right: 15px;
 }
 
+.left{
+    float : left;
+}
+
+.right{
+    float : right;
+}
+
 .odd{
     background-color: #DDD;
 }

@@ -17,8 +17,11 @@ class ChildType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('birthDate')
-        ;
+            ->add('birthDate','date', array(
+                'input'  => 'datetime',
+                'widget' => 'single_text',
+                'required' => true)
+            );
     }
     
     /**
