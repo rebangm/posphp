@@ -5,77 +5,83 @@
     {% include "PosCustomerBundle::alert.html.twig" %}
 
     <div class="form">
-       <form action="{{ path('pos_customer_manage_edit', {'customer_id': id }) }}" {{ form_enctype(form) }} method="POST">
-           {# {{ form_widget(form) }} #}
-           {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+        <form action="{{ path('pos_customer_manage_edit', {'customer_id': id }) }}" {{ form_enctype(form) }} method="POST">
+            {# {{ form_widget(form) }} #}
+            {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+            <div>
+                {{ form_row(form.Enregistrer) }}
 
-           <div class="left">
-               {{ form_row(form.Enregistrer) }}
-               <fieldset>
-                   {{ form_label(form.firstName) }}
-                   {{ form_errors(form.firstName) }}
-                   {{ form_widget(form.firstName) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.lastName) }}
-                   {{ form_errors(form.lastName) }}
-                   {{ form_widget(form.lastName) }}
-               </fieldset>
+            </div>
+            <div class="left">
 
-               <fieldset class="textAndButton">
-                   {{ form_label(form.barCode) }}
-                   {{ form_errors(form.barCode) }}
-                   {{ form_widget(form.barCode) }}
+                <fieldset>
+                    {{ form_label(form.firstName) }}
+                    {{ form_errors(form.firstName) }}
+                    {{ form_widget(form.firstName) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.lastName) }}
+                    {{ form_errors(form.lastName) }}
+                    {{ form_widget(form.lastName) }}
+                </fieldset>
 
-                   {{ form_widget(form.generate) }}
-               </fieldset>
+                <fieldset class="textAndButton">
+                    {{ form_label(form.barCode) }}
+                    {{ form_errors(form.barCode) }}
+                    {{ form_widget(form.barCode) }}
 
-               <fieldset>
-                   {{ form_label(form.phoneNumber) }}
-                   {{ form_errors(form.phoneNumber) }}
-                   {{ form_widget(form.phoneNumber) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.mobileNumber) }}
-                   {{ form_errors(form.mobileNumber) }}
-                   {{ form_widget(form.mobileNumber) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.mail) }}
-                   {{ form_errors(form.mail) }}
-                   {{ form_widget(form.mail) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.address) }}
-                   {{ form_errors(form.address) }}
-                   {{ form_widget(form.address) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.city) }}
-                   {{ form_errors(form.city) }}
-                   {{ form_widget(form.city) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.zipCode) }}
-                   {{ form_errors(form.zipCode) }}
-                   {{ form_widget(form.zipCode) }}
-               </fieldset>
-               <fieldset>
-                   {{ form_label(form.childBirthDate) }}
-                   {{ form_errors(form.childBirthDate) }}
-                   {{ form_widget(form.childBirthDate) }}
-               </fieldset>
+                    {{ form_widget(form.generate) }}
+                </fieldset>
 
-           </div>
-           <div>
-                   {{ form_row(form.children) }}
-               {#<ul class="children" data-prototype="{{ form_widget(form.children.vars.prototype)|e }}">
+                <fieldset>
+                    {{ form_label(form.phoneNumber) }}
+                    {{ form_errors(form.phoneNumber) }}
+                    {{ form_widget(form.phoneNumber) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.mobileNumber) }}
+                    {{ form_errors(form.mobileNumber) }}
+                    {{ form_widget(form.mobileNumber) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.mail) }}
+                    {{ form_errors(form.mail) }}
+                    {{ form_widget(form.mail) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.address) }}
+                    {{ form_errors(form.address) }}
+                    {{ form_widget(form.address) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.city) }}
+                    {{ form_errors(form.city) }}
+                    {{ form_widget(form.city) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.zipCode) }}
+                    {{ form_errors(form.zipCode) }}
+                    {{ form_widget(form.zipCode) }}
+                </fieldset>
+                <fieldset>
+                    {{ form_label(form.childBirthDate) }}
+                    {{ form_errors(form.childBirthDate) }}
+                    {{ form_widget(form.childBirthDate) }}
+                </fieldset>
 
-               </ul>
-               #}
-           </div>
+            </div>
+            <div class="left">
+                {{ form_label(form.child) }}
+                <ul id="{{ form.child.vars.id|e }}" class="children" data-prototype="{{ form_widget(form.child.vars.prototype)|e }}">
+                    {% for child in form.child %}
+                        <li>{{ form_row(form.child) }}</li>
+                    {% endfor %}
+                    {% do form.child.setRendered() %}
+                </ul>
 
-          {{ form_rest(form) }}
+            </div>
+
+            {{ form_rest(form) }}
         </form>
     </div>
 

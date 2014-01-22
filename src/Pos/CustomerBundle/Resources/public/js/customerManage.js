@@ -5,7 +5,7 @@
 
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">Supprimer ce tag</a>');
+    var $removeFormA = $('<a href="#" class="btn btn-danger">Supprimer ce tag</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -24,28 +24,26 @@ function addChildForm(collectionHolder, $newLinkLi) {
     // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
     // la longueur de la collection courante
     console.log(collectionHolder.children().length);
-    var newForm = prototype.replace(/__name__label__/g, collectionHolder.children().length).replace(/__name__/g, collectionHolder.children().length);
-
-
+    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
-    var $newFormLi = $('<div></div>').append(newForm);
+    var $newFormLi = $('<li></li>').append(newForm);
     $newLinkLi.before($newFormLi);
     addTagFormDeleteLink($newFormLi);
 }
 
 
-$( document ).ready(function() {
+$(document).ready(function() {
     console.log( "ready!" );
 
 
     // Récupère le div qui contient la collection de tags
-    var collectionHolder = $('div.children');
+    var collectionHolder = $('ul.children');
 
     // ajoute un lien « add a tag »
-    var $addTagLink = $('<a href="#" class="add_children_link">Ajouter un enfant</a>');
-    var $newLinkLi = $('<div></div>').append($addTagLink);
+    var $addTagLink = $('<a href="#" class="add_children_link btn btn-inverse">Ajouter un enfant</a>');
+    var $newLinkLi = $('<li></li>').append($addTagLink);
 
-    $(document).ready(function() {
+   // $(document).ready(function() {
         // ajoute l'ancre « ajouter un tag » et li à la balise ul
         collectionHolder.append($newLinkLi);
 
@@ -61,5 +59,5 @@ $( document ).ready(function() {
             addTagFormDeleteLink($(this));
         });
 */
-    });
+   // });
 });

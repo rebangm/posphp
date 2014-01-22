@@ -45,6 +45,11 @@ body {
   padding: 20px 35px 10px;
   /*margin: 0 auto 20px;*/
 }
+
+.form{
+    overflow: auto;
+}
+
 .form-signin {
   max-width: 300px;
   padding: 19px 29px 29px;

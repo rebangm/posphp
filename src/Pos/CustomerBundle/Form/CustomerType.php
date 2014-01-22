@@ -31,7 +31,7 @@ class CustomerType extends AbstractType
                     'widget' => 'single_text',
                     'required' => false)
             )
-            ->add('children', 'collection', array(
+            ->add('child', 'collection', array(
                 'attr' => array('class' => 'children'),
                 'type' => new ChildType(),
                 'allow_add' => true,
@@ -39,8 +39,6 @@ class CustomerType extends AbstractType
                 'by_reference' => false,
                 'required'     => false
             ))
-            ->add('clear','button', array(
-                'attr' => array('class' => 'btn btn-inverse')))
             ->add('Enregistrer' , 'submit', array(
                 'attr' => array('class' => 'btn btn-primary')))
         ;
