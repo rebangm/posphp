@@ -20,14 +20,14 @@ function addTagFormDeleteLink($tagFormLi) {
 function addChildForm(collectionHolder, $newLinkLi) {
     // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
     var prototype = collectionHolder.attr('data-prototype');
-    console.log(prototype);
+    //console.log(prototype);
     // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
     // la longueur de la collection courante
-    console.log(collectionHolder.children().length);
+    console.log(collectionHolder);
     var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
     // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
     var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
+    collectionHolder.append($newFormLi);
     addTagFormDeleteLink($newFormLi);
 }
 
@@ -40,9 +40,7 @@ $(document).ready(function() {
     var collectionHolder = $('ul.children');
 
     // ajoute un lien « add a tag »
-    var $addTagLink = $('<a href="#" class="add_children_link btn btn-inverse">Ajouter un enfant</a>');
-    var $newLinkLi = collectionHolder.append($addTagLink);
-
+    var $addTagLink = collectionHolder.parent.find('button');
    // $(document).ready(function() {
         // ajoute l'ancre « ajouter un tag » et li à la balise ul
         collectionHolder.append($newLinkLi);
@@ -53,6 +51,7 @@ $(document).ready(function() {
 
             // ajoute un nouveau formulaire tag (voir le prochain bloc de code)
             addChildForm(collectionHolder, $newLinkLi);
+            return false;
         });
 
         collectionHolder.find('li').each(function() {
