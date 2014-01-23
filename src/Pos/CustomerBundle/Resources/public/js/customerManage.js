@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     // ajoute un lien « add a tag »
     var $addTagLink = $('<a href="#" class="add_children_link btn btn-inverse">Ajouter un enfant</a>');
-    var $newLinkLi = $('<li></li>').append($addTagLink);
+    var $newLinkLi = collectionHolder.append($addTagLink);
 
    // $(document).ready(function() {
         // ajoute l'ancre « ajouter un tag » et li à la balise ul
@@ -54,10 +54,10 @@ $(document).ready(function() {
             // ajoute un nouveau formulaire tag (voir le prochain bloc de code)
             addChildForm(collectionHolder, $newLinkLi);
         });
-        /*
+
         collectionHolder.find('li').each(function() {
             addTagFormDeleteLink($(this));
         });
-*/
+
    // });
 });

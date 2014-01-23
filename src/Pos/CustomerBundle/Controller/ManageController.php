@@ -58,16 +58,39 @@ class ManageController extends Controller
 
         $request = $this->get('request');
         $session = $request->getSession();
-
+        $listChild = array();
+        foreach ($customer->getChild() as $child) {
+            $listChild[] = $child;
+        }
+        if (!$customer) {
+            throw $this->createNotFoundException('Aucune client trouvé pour : '.$customer);
+        }
 
         $form = $this->createForm(new CustomerType(), $customer);
         if ( $request->getMethod() == 'POST' ) {
             $form->handleRequest($request);
             if ( $form->isValid() ) {
 
+                $customer->getChild()->clear();
 
                 $em   = $this->getDoctrine()->getManager();
                 $em->persist($customer);
+                $em->flush();
+
+                foreach ($form->get('child')->getData() as $child) {
+                    $child->setCustomer($customer);
+                    $em->persist($child);
+                }
+                foreach ($listChild as $originalChild) {
+                    foreach ($form->get('child')->getData() as $child) {
+                        // Si $originalChild existe dans le formulaire, on sort de la boucle car pas besoin de la supprimer
+                        if ($originalChild == $child) {
+                            continue 2;
+                        }
+                    }
+                    // $originalChild n'existe plus dans le formulaire, on la supprime
+                    $em->remove($originalChild);
+                }
 
                 $em->flush();
                 $session->getFlashBag()->add('success',

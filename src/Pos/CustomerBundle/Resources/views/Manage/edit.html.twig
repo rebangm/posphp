@@ -71,10 +71,13 @@
 
             </div>
             <div class="left">
-                {{ form_label(form.child) }}
+                {{ form_label(form.child, "Enfants") }}
                 <ul id="{{ form.child.vars.id|e }}" class="children" data-prototype="{{ form_widget(form.child.vars.prototype)|e }}">
-                    {% for child in form.child %}
-                        <li>{{ form_row(form.child) }}</li>
+                    {% for oneChild in form.child %}
+                        <li>
+                            {# {{ form_row(oneChild, { 'attr': {'class': 'foo'} }) }}  #}
+                            {{ form_widget(oneChild) }}
+                        </li>
                     {% endfor %}
                     {% do form.child.setRendered() %}
                 </ul>

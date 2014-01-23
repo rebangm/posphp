@@ -50,6 +50,11 @@ body {
     overflow: auto;
 }
 
+
+.required{
+    font-weight: bold ;
+    color: red;
+}
 .form-signin {
   max-width: 300px;
   padding: 19px 29px 29px;
