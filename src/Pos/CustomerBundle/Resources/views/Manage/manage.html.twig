@@ -18,6 +18,7 @@
                     <td>
                         <a href="{{ path('pos_customer_manage_view', {'customer_id': customer.id }) }}" class="btn"><i class="icon-eye-open"></i></a>
                         <a href="{{ path('pos_customer_manage_edit', {'customer_id': customer.id }) }}" class="btn"><i class="icon-edit"></i></a>
+                        <a href="{{ path('pos_customer_manage_add_child', {'customer_id': customer.id }) }}" class="btn"><i class="icon-leaf"></i></a>
                     </td>
                 </tr> 
             {% endfor %}

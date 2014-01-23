@@ -30,7 +30,7 @@ class Child
      *
      * @ORM\Column(name="first_name", type="string", length=60)
      * @Assert\Length(
-     *      min = "1",
+     *      min = "3",
      *      max = "50",
      *      minMessage = "le nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "le nom ne peut pas être plus long que {{ limit }} caractères")

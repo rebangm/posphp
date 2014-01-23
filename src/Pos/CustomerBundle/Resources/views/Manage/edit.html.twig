@@ -7,7 +7,7 @@
     <div class="form">
         <form action="{{ path('pos_customer_manage_edit', {'customer_id': id }) }}" {{ form_enctype(form) }} method="POST">
             {# {{ form_widget(form) }} #}
-            {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+
             <div>
                 {{ form_row(form.Enregistrer) }}
 

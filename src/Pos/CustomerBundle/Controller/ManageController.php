@@ -3,10 +3,12 @@
 namespace Pos\CustomerBundle\Controller;
 
 use Pos\CustomerBundle\Form\CustomerType;
+use Pos\CustomerBundle\Form\ChildType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Pos\CustomerBundle\Entity\Customer;
+use Pos\CustomerBundle\Entity\Child;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
@@ -63,7 +65,7 @@ class ManageController extends Controller
             $listChild[] = $child;
         }
         if (!$customer) {
-            throw $this->createNotFoundException('Aucune client trouvé pour : '.$customer);
+            throw $this->createNotFoundException('Aucun client trouvé pour : '.$customer);
         }
 
         $form = $this->createForm(new CustomerType(), $customer);
@@ -105,4 +107,48 @@ class ManageController extends Controller
         return $this->render('PosCustomerBundle:Manage:edit.html.twig',
             array( 'form' => $form->createView(), 'id'   => $customer->getId() ));
     }
+
+    /**
+     * @param Customer $customer
+     * @ParamConverter("customer", options={"mapping": {"customer_id": "id"}})
+     */
+    public function addChildAction(Customer $customer){
+
+
+        $request = $this->get('request');
+        $session = $request->getSession();
+
+        $child = new Child();
+        $form = $this->createForm(new ChildType(), $child);
+        if ( $request->getMethod() == 'POST' ) {
+            $form->handleRequest($request);
+            if ( $form->isValid() ) {
+
+
+
+                $em   = $this->getDoctrine()->getManager();
+                $em->persist($child);
+                $em->flush();
+
+                $session->getFlashBag()->add('success',
+                    'Modification effectuée!');
+                return $this->redirect($this->generateUrl('pos_customer_manage_list'));
+            } else {
+                $session->getFlashBag()->add('error',
+                    'Données du formulaire invalide.');
+            }
+        }
+
+        return $this->render('PosCustomerBundle:Manage:addChild.html.twig',
+            array( 'form' => $form->createView(), 'id'   => $customer->getId() ));
+
+
+        $session->getFlashBag()->add('success',
+            'Pass throw addChild action');
+
+        return $this->redirect($this->generateUrl('pos_customer_manage_list'));
+
+    }
+
+
 }

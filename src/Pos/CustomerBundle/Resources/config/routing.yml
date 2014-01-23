@@ -12,9 +12,15 @@ pos_customer_manage_list:
         
 pos_customer_manage_edit:
     pattern:   /customer/manage/edit/{customer_id}
-    defaults: { _controller: PosCustomerBundle:Manage:edit, page : 1 }
+    defaults: { _controller: PosCustomerBundle:Manage:edit, customer : 1 }
     requirements: 
-        page: \d+
+        customer: \d+
+
+pos_customer_manage_add_child:
+    pattern:   /customer/manage/addChild/{customer_id}
+    defaults: { _controller: PosCustomerBundle:Manage:addChild, customer : 1 }
+    requirements:
+        customer: \d+
 
 pos_customer_manage_view:
     pattern:   /customer/manage/view/

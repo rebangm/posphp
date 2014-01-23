@@ -1,0 +1,14 @@
+{% extends "PosCustomerBundle::customer.html.twig" %}
+ 
+{% block content %}
+
+    {% include "PosCustomerBundle::alert.html.twig" %}
+
+    <div class="form">
+       <form action="{{ path('pos_customer_manage_add_child', {'customer_id': app.request.get('customer_id')})  }}" {{ form_enctype(form) }} method="POST" novalidate="novalidate">
+            {{ form_widget(form) }}
+        </form>
+    </div>
+ 
+{% endblock %}
+
