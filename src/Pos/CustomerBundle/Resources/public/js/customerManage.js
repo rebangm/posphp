@@ -9,51 +9,27 @@ function addTagFormDeleteLink($tagFormLi) {
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
-        // empêche le lien de créer un « # » dans l'URL
         e.preventDefault();
-
-        // supprime l'élément li pour le formulaire de tag
         $tagFormLi.remove();
     });
 }
 
-function addChildForm(collectionHolder, $newLinkLi) {
-    // Récupère l'élément ayant l'attribut data-prototype comme expliqué plus tôt
+function addChildForm(collectionHolder) {
     var prototype = collectionHolder.attr('data-prototype');
-    //console.log(prototype);
-    // Remplace '__name__' dans le HTML du prototype par un nombre basé sur
-    // la longueur de la collection courante
-    console.log(collectionHolder);
     var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
-    // Affiche le formulaire dans la page dans un li, avant le lien "ajouter un tag"
-    var $newFormLi = $('<li></li>').append(newForm);
-    collectionHolder.append($newFormLi);
-    addTagFormDeleteLink($newFormLi);
+    var $ChildForm = $('<li></li>').append(newForm);
+    collectionHolder.append($ChildForm);
+    addTagFormDeleteLink($ChildForm);
 }
 
 
 $(document).ready(function() {
-    console.log( "ready!" );
-
-
-    // Récupère le div qui contient la collection de tags
     var collectionHolder = $('ul.children');
-
-    // ajoute un lien « add a tag »
-    var $addTagLink = collectionHolder.parent.find('button');
-   // $(document).ready(function() {
-        // ajoute l'ancre « ajouter un tag » et li à la balise ul
-        collectionHolder.append($newLinkLi);
-
-        $addTagLink.on('click', function(e) {
-            // empêche le lien de créer un « # » dans l'URL
+    $('#add_children_link').on('click', function(e) {
             e.preventDefault();
-
-            // ajoute un nouveau formulaire tag (voir le prochain bloc de code)
-            addChildForm(collectionHolder, $newLinkLi);
+            addChildForm(collectionHolder);
             return false;
         });
-
         collectionHolder.find('li').each(function() {
             addTagFormDeleteLink($(this));
         });

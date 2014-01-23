@@ -71,7 +71,7 @@
 
             </div>
             <div class="left">
-                {{ form_label(form.child, "Enfants") }}
+                
                 <ul id="{{ form.child.vars.id|e }}" class="children" data-prototype="{{ form_widget(form.child.vars.prototype)|e }}">
                     {% for oneChild in form.child %}
                         <li>

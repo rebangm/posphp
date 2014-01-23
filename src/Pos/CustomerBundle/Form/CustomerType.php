@@ -37,7 +37,6 @@ class CustomerType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
-                'required'     => false
             ))
             ->add('Enregistrer' , 'submit', array(
                 'attr' => array('class' => 'btn btn-primary')))

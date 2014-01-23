@@ -8,22 +8,21 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ChildType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
+            ->add('firstName', 'text', array('required' => true) )
             ->add('birthDate','date', array(
-                'input'  => 'datetime',
-                'widget' => 'single_text',
-                'required' => true)
+                    'input'  => 'datetime',
+                    'widget' => 'single_text',
+                    'required' => true)
             );
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

@@ -30,24 +30,13 @@ class Child
      *
      * @ORM\Column(name="first_name", type="string", length=60)
      * @Assert\Length(
-     *      min = "1",
+     *      min = "3",
      *      max = "50",
      *      minMessage = "le nom doit faire au moins {{ limit }} caractères",
      *      maxMessage = "le nom ne peut pas être plus long que {{ limit }} caractères")
      */
     private $firstName;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="last_name", type="string", length=60)
-     * @Assert\Length(
-     *      min = "1",
-     *      max = "50",
-     *      minMessage = "le prénom doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "le prénom ne peut pas être plus long que {{ limit }} caractères")
-     */
-    private $lastName;
 
     /**
      * @var string
@@ -93,29 +82,6 @@ class Child
     public function getFirstName()
     {
         return $this->firstName;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     * @return Child
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
     }
 
     /**
