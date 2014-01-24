@@ -7,11 +7,13 @@
     <div class="form">
         <form action="{{ path('pos_customer_manage_edit', {'customer_id': id }) }}" {{ form_enctype(form) }} method="POST">
             {# {{ form_widget(form) }} #}
+            {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+            <div class="customer-form-button">
 
-            <div>
-                {{ form_row(form.Enregistrer) }}
-
+                {{ form_widget(form.Enregistrer) }}
+                <button id="add_children_link" class="add_children_link btn btn-inverse">Ajouter un enfant</button>
             </div>
+
             <div class="left">
 
                 <fieldset>
@@ -81,7 +83,7 @@
                     {% endfor %}
                     {% do form.child.setRendered() %}
                 </ul>
-                <button id="add_children_link" class="add_children_link btn btn-inverse">Ajouter un enfant</button>
+
             </div>
 
             {{ form_rest(form) }}

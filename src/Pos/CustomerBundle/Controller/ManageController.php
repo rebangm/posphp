@@ -151,4 +151,41 @@ class ManageController extends Controller
     }
 
 
+
+    public function addAction(){
+
+        $customer = new Customer();
+        $request = $this->get('request');
+        $session = $request->getSession();
+
+        $form = $this->createForm(new CustomerType(), $customer);
+        if ( $request->getMethod() == 'POST' ) {
+            $form->handleRequest($request);
+            if ( $form->isValid() ) {
+
+                $customer->getChild()->clear();
+
+                $em   = $this->getDoctrine()->getManager();
+                $em->persist($customer);
+                $em->flush();
+
+                foreach ($form->get('child')->getData() as $child) {
+                    $child->setCustomer($customer);
+                    $em->persist($child);
+                }
+
+                $em->flush();
+                $session->getFlashBag()->add('success',
+                    'Ajout effectuée!');
+                return $this->redirect($this->generateUrl('pos_customer_manage_list'));
+            } else {
+                $session->getFlashBag()->add('error',
+                    'Données du formulaire invalide.');
+            }
+        }
+
+        return $this->render('PosCustomerBundle:Manage:edit.html.twig',
+            array( 'form' => $form->createView(), 'id'   => $customer->getId() ));
+    }
+
 }

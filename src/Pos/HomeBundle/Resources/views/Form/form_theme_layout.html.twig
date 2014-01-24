@@ -1,11 +1,13 @@
 {% extends 'form_div_layout.html.twig' %}
 
 {% block form_label %}
+   <div class="form-label">
     {{ parent() }}
 
     {% if required %}
-        <span class="required" title="Ce champ est obligatoire">*</span>
+        <span class="required-field" title="Ce champ est obligatoire">*</span>
     {% endif %}
+   </div>
 {% endblock %}
 
 {#

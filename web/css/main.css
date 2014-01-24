@@ -46,14 +46,23 @@ body {
   /*margin: 0 auto 20px;*/
 }
 
-.form{
-    overflow: auto;
+
+
+label{
+    display: inline;
 }
 
+.form-label{
+    display: block;
+}
 
-.required{
+.required-field{
     font-weight: bold ;
     color: red;
+}
+
+.form{
+    overflow: auto;
 }
 .form-signin {
   max-width: 300px;
@@ -83,4 +92,9 @@ body {
 
 .content-error{
     
+}
+
+
+#leftMenu{
+    background-color: lightgrey;
 }

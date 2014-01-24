@@ -22,6 +22,10 @@ pos_customer_manage_add_child:
     requirements:
         customer: \d+
 
+pos_customer_manage_add:
+    pattern:   /customer/manage/edit/
+    defaults: { _controller: PosCustomerBundle:Manage:add}
+
 pos_customer_manage_view:
     pattern:   /customer/manage/view/
     defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }

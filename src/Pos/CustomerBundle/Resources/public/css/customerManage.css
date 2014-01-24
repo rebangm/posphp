@@ -18,3 +18,9 @@ ul.children li{
     margin-bottom: 10px;
 }
 
+.customer-form-button{
+    padding: 10px;
+    margin: 10px 0;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
