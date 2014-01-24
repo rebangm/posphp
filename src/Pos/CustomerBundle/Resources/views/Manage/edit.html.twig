@@ -14,7 +14,7 @@
                 <button id="add_children_link" class="add_children_link btn btn-inverse">Ajouter un enfant</button>
             </div>
 
-            <div class="left">
+            <div class="left form-group">
 
                 <fieldset>
                     {{ form_label(form.firstName) }}
@@ -28,11 +28,12 @@
                 </fieldset>
 
                 <fieldset class="textAndButton">
+                    {{ form_widget(form.generate) }}
                     {{ form_label(form.barCode) }}
                     {{ form_errors(form.barCode) }}
                     {{ form_widget(form.barCode) }}
 
-                    {{ form_widget(form.generate) }}
+
                 </fieldset>
 
                 <fieldset>
@@ -72,7 +73,7 @@
                 </fieldset>
 
             </div>
-            <div class="left">
+            <div class="left form-group">
                 
                 <ul id="{{ form.child.vars.id|e }}" class="children" data-prototype="{{ form_widget(form.child.vars.prototype)|e }}">
                     {% for oneChild in form.child %}

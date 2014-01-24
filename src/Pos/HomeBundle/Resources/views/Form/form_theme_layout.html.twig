@@ -10,6 +10,14 @@
    </div>
 {% endblock %}
 
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% set type = type|default('text') %}
+        <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+
 {#
 {% block form_row %}
     {% spaceless %}

@@ -25,7 +25,7 @@ class CustomerType extends AbstractType
             ->add('zipCode')
             ->add('barCode')
             ->add('generate','button', array(
-                'attr' => array('class' => 'btn btn-inverse')))
+                'attr' => array('class' => 'btn btn-dark')))
             ->add('childBirthDate','date', array(
                     'input'  => 'datetime',
                     'widget' => 'single_text',

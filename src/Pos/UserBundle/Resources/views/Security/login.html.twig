@@ -9,9 +9,9 @@
         <form class="form-signin" action="{{ path('pos_user_login_check') }}" method="post">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label for="username">Login</label>
-            <input type="text" class="input-block-level" id="username" name="_username" placeholder="Username" value="{{ last_username }}">
+            <input type="text" class="form-control" id="username" name="_username" placeholder="Username" value="{{ last_username }}">
             <label for="password">Password</label>
-            <input type="password" class="input-block-level" id="password" name="_password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
 {#            <input type="hidden" name="_target_path" />#}
             <label class="checkbox">
                 <input type="checkbox" name="_remember_me" value="remember_me"> Remember me
