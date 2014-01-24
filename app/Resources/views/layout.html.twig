@@ -3,14 +3,15 @@
 {% block body %}
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container-fluid">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <div class="container">
+            <button type="button" class="btn btn-default navbar-btn navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
                     <li class="active"><a href="{{path('pos_home_homepage')}}">Home</a></li>
                     <li><a href="{{path('pos_user_manage')}}">User</a></li>
                     <li><a href="{{path('pos_customer_manage')}}">Customer</a></li>
@@ -18,18 +19,18 @@
                     
                 </ul>
 
-                <form class="navbar-form pull-right">
-                    <a href="{{ path('pos_user_logout') }}" class="btn">logout</a>
+                <form class="navbar-form navbar-right">
+                    <a href="{{ path('pos_user_logout') }}" class="btn btn-default">logout</a>
                 </form>
-                <div class="pull-right"><p class="user-info"><i class="icon-user icon-white"></i> Welcome {{ app.user.username }}</p></div>
+                <div class="navbar-right"><p class="user-info"><i class="glyphicon glyphicon-user"></i> Welcome {{ app.user.username }}</p></div>
             </div><!--/.nav-collapse -->
         </div>
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div id="leftMenu" class="span2">
+<div class="container content-full">
+    <div class="row">
+        <div id="leftMenu" class="col-md-2">
             <a class="posLogo"href="#"><img src="/img/Logo_POS.jpg" /> </a>
             {% block leftmenu %}
                 <h3>Mini-ERP</h3>
@@ -38,7 +39,7 @@
                 </ul>
             {% endblock %}
         </div>
-        <div id="content" class="span10">
+        <div id="content" class="col-md-10">
             {% block content %}
             {% endblock %}
         </div>
