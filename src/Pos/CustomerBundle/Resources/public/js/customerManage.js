@@ -5,12 +5,13 @@
 
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#" class="btn btn-danger">Supprimer ce tag</a>');
-    $tagFormLi.append($removeFormA);
+    var $removeFormA = $('<button class="btn-xs btn-danger right"><i class="glyphicon glyphicon-remove"></i></button>');
+    $tagFormLi.prepend($removeFormA);
 
     $removeFormA.on('click', function(e) {
         e.preventDefault();
         $tagFormLi.remove();
+        return false;
     });
 }
 

@@ -11,7 +11,7 @@
             <div class="customer-form-button">
 
                 {{ form_widget(form.Enregistrer) }}
-                <button id="add_children_link" class="add_children_link btn btn-inverse">Ajouter un enfant</button>
+                <button id="add_children_link" class="add_children_link btn btn-dark">Ajouter un enfant</button>
             </div>
 
             <div class="left form-group">
@@ -28,11 +28,11 @@
                 </fieldset>
 
                 <fieldset class="textAndButton">
-                    {{ form_widget(form.generate) }}
+
                     {{ form_label(form.barCode) }}
                     {{ form_errors(form.barCode) }}
                     {{ form_widget(form.barCode) }}
-
+                    {{ form_widget(form.generate) }}
 
                 </fieldset>
 
