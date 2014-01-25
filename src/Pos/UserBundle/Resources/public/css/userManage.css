@@ -10,3 +10,17 @@
     height: 60px;
 }
 
+.select{
+    width: 65px;
+}
+
+.search{
+    width: 400px;
+}
+
+#userSearchSubmit{
+    position: relative;
+    top: 0px;
+    left: -20px;
+    border-radius: 0px 4px 4px 0;
+}

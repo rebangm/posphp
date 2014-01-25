@@ -23,11 +23,11 @@ function userSetActive(button){
 				
                 if (data.message.active == 1){ 
                     button.addClass("btn-success").removeClass("btn-danger");
-					$("i",button).addClass("icon-ok").removeClass("icon-remove");
+					$("i",button).addClass("glyphicon-ok").removeClass("glyphicon-remove");
 				}
                 else if(data.message.active == 0){
                     button.addClass("btn-danger").removeClass("btn-success");
-					$("i",button).addClass("icon-remove").removeClass("icon-ok");
+					$("i",button).addClass("glyphicon-remove").removeClass("glyphicon-ok");
 				}
                 button.attr("data-url", data.message.url);
             },
