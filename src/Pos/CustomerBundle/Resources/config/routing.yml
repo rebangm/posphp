@@ -23,7 +23,7 @@ pos_customer_manage_add_child:
         customer: \d+
 
 pos_customer_manage_add:
-    pattern:   /customer/manage/edit/
+    pattern:   /customer/manage/add/
     defaults: { _controller: PosCustomerBundle:Manage:add}
 
 pos_customer_manage_view:

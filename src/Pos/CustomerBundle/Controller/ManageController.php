@@ -184,7 +184,7 @@ class ManageController extends Controller
             }
         }
 
-        return $this->render('PosCustomerBundle:Manage:edit.html.twig',
+        return $this->render('PosCustomerBundle:Manage:add.html.twig',
             array( 'form' => $form->createView(), 'id'   => $customer->getId() ));
     }
 
