@@ -31,3 +31,10 @@ pos_customer_manage_view:
     defaults: { _controller: PosCustomerBundle:Manage:index, page : 1 }
     requirements: 
         page: \d+
+
+pos_customer_manage_ajax_gen_barcode:
+    pattern:   /user/manage/ajax/barcode/id/{id}/type/{type}
+    defaults: { _controller: PosCustomerBundle:Manage:generateBarcode, id, type  }
+    requirements:
+        id: \d+
+        type: \w+
