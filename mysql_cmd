@@ -1,0 +1,7 @@
+CREATE USER 'pos'@'localhost' IDENTIFIED BY 'pos';
+CREATE DATABASE pos;
+GRANT ALL ON pos.* TO 'pos'@'localhost';
+
+
+git config --global user.name "Jean-Philippe Depigny"
+git config --global user.email jp.depigny@gmail.com
