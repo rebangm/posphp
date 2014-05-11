@@ -1,0 +1,5 @@
+pos_item_manage:
+    pattern:   /product/manage/
+    defaults: { _controller: PosItemBundle:Manage:index, page : 1 }
+    requirements:
+        page: \d+

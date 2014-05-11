@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Pos\HomeBundle\PosHomeBundle(),
             new Pos\CustomerBundle\PosCustomerBundle(),
             new Pos\PaginatorBundle\PosPaginatorBundle(),
-            new Pos\ItemBundle\PosItemBundle(),
+            new Pos\ProductBundle\PosProductBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

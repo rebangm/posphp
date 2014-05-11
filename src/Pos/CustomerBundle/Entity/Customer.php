@@ -96,12 +96,6 @@ class Customer
      */
     private $barCode;
     
-    /**
-     * @var string
-     * @ORM\Column(name="childbirth_date", type="date", nullable=true)
-     * @Assert\Date()
-     */
-    private $childBirthDate;
 
     /**
     * @ORM\OneToMany(targetEntity="Pos\CustomerBundle\Entity\Child", mappedBy="customer",cascade={"persist"})
@@ -300,29 +294,6 @@ class Customer
     public function getZipCode()
     {
         return $this->zipCode;
-    }
-
-    /**
-     * Set childBirthDate
-     *
-     * @param \DateTime $childBirthDate
-     * @return Customer
-     */
-    public function setChildBirthDate($childBirthDate)
-    {
-        $this->childBirthDate = $childBirthDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get childBirthDate
-     *
-     * @return \DateTime 
-     */
-    public function getChildBirthDate()
-    {
-        return $this->childBirthDate;
     }
 
     /**

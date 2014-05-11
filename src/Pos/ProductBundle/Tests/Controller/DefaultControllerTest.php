@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\ItemBundle\Tests\Controller;
+namespace Pos\ProductBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

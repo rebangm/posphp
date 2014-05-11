@@ -96,12 +96,6 @@ class Customer
      */
     private $barCode;
     
-    /**
-     * @var string
-     * @ORM\Column(name="childbirth_date", type="date", nullable=true)
-     * @Assert\Date()
-     */
-    private $childBirthDate;
 
     /**
     * @ORM\OneToMany(targetEntity="Pos\CustomerBundle\Entity\Child", mappedBy="customer",cascade={"persist"})
