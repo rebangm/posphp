@@ -8,6 +8,6 @@ class ManageController extends Controller
 {
     public function indexAction($page)
     {
-        return $this->render('PosProductBundle:Default:index.html.twig', array('page' => $page));
+        return $this->render('PosProductBundle:Manage:index.html.twig', array('page' => $page));
     }
 }
