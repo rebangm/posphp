@@ -24,35 +24,35 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="purchasePrice", type="decimal")
+     * @ORM\Column(name="purchase_price", type="decimal", scale=2)
      */
     private $purchasePrice;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="salesPrice", type="decimal")
+     * @ORM\Column(name="sale_price", type="decimal", scale=2)
      */
-    private $salesPrice;
+    private $salePrice;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="barcode", type="integer")
+     * @ORM\Column(name="barcode", type="integer", unique=true)
      */
     private $barcode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="stockToSupply", type="integer")
+     * @ORM\Column(name="stock_to_supply", type="integer")
      */
     private $stockToSupply;
 
@@ -66,14 +66,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="utilization", type="text")
+     * @ORM\Column(name="utilization", type="text", nullable=true)
      */
     private $utilization;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="typesetting", type="text")
+     * @ORM\Column(name="typesetting", type="text", nullable=true)
      */
     private $typesetting;
 
@@ -87,24 +87,42 @@ class Product
     /**
      * @var boolean
      *
-     * @ORM\Column(name="restockingSupplier", type="boolean")
+     * @ORM\Column(name="restocking_supplier", type="boolean")
      */
     private $restockingSupplier;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bookedQuantity", type="integer")
+     * @ORM\Column(name="booked_quantity", type="integer")
      */
     private $bookedQuantity;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="vatRate", type="decimal")
+     * @ORM\Column(name="vat_rate", type="decimal", scale=2)
      */
     private $vatRate;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="supplier", type="string")
+     */
+    private $supplier;
+
+
+    /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+        $this->restockingSupplier = true;
+        $this->bookedQuantity = 0;
+        $this->vatRate = "19.6";
+    }
 
     /**
      * Get id
@@ -390,5 +408,51 @@ class Product
     public function getVatRate()
     {
         return $this->vatRate;
+    }
+
+    /**
+     * Set salePrice
+     *
+     * @param string $salePrice
+     * @return Product
+     */
+    public function setSalePrice($salePrice)
+    {
+        $this->salePrice = $salePrice;
+    
+        return $this;
+    }
+
+    /**
+     * Get salePrice
+     *
+     * @return string 
+     */
+    public function getSalePrice()
+    {
+        return $this->salePrice;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @param string $supplier
+     * @return Product
+     */
+    public function setSupplier($supplier)
+    {
+        $this->supplier = $supplier;
+    
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @return string 
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
     }
 }

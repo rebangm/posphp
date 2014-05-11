@@ -7,9 +7,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Pos\CustomerBundle\Entity\Customer;
+use Pos\ProductBundle\Entity\Product;
 
-class Customers implements FixtureInterface, ContainerAwareInterface
+class Products implements FixtureInterface, ContainerAwareInterface
 {
 
     private $container;
@@ -22,19 +22,25 @@ class Customers implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
 
-        // Les noms d'utilisateurs à créer
-        $nom = 'Items';
+        $file = file_get_contents("/opt/hosting/dev.pos.fr/src/Pos/ProductBundle/DataFixtures/ORM/data.txt");
 
-        $i=1;
-        for($i ; $i <= 16 ; $i++ )
-        {
-            // On crée l'utilisateur
-            $customers[$i] = new Customer;
-                       
-            $customers[$i]->setFirstName($nom . 'Prenom' . $i);
-            $customers[$i]->setLastName($nom . 'Nom' . $i);
-            $customers[$i]->setMail('Client' . $i.'@customer.com');
-            $manager->persist($customers[$i]);
+        $products = explode("\n", $file);
+        array_shift($products);
+        foreach($products as $productInfos){
+            $productExplodeInfos = explode(":",$productInfos);
+            $product = new Product();
+            $product->setName($productExplodeInfos[0]);
+            $product->setBarcode($productExplodeInfos[1]);
+            $product->setDescription($productExplodeInfos[2]);
+            $product->setPurchasePrice($productExplodeInfos[3]);
+            $product->setSalePrice($productExplodeInfos[4]);
+            $product->setStockToSupply($productExplodeInfos[5]);
+            $product->setQuantity($productExplodeInfos[6]);
+            $product->setSupplier($productExplodeInfos[7]);
+
+
+
+            $manager->persist($product);
         }
 
         // On déclenche l'enregistrement

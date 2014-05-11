@@ -2,10 +2,6 @@ pos_product:
     resource: "@PosProductBundle/Resources/config/routing.yml"
     prefix:   /
 
-pos_item:
-    resource: "@PosItemBundle/Resources/config/routing.yml"
-    prefix:   /
-
 pos_paginator:
     resource: "@PosPaginatorBundle/Resources/config/routing.yml"
     prefix:   /

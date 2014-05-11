@@ -1,0 +1,3 @@
+name:barcode:description:purchasePrice:salesPrice:stockToSupply:quantity:supplier
+Coca:123456789:boisson gazeuse:0.99:1.50:10:100:Coca company
+Coca light:1234567899:boisson gazeuse:0.99:1.50:10:100:Coca company

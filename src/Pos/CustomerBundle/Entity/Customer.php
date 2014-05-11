@@ -92,7 +92,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="bar_code", type="string", length=200, nullable=true)
+     * @ORM\Column(name="bar_code", type="string", length=200, unique=true, nullable=true)
      */
     private $barCode;
     
