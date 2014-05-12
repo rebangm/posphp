@@ -1,3 +1,6 @@
 name:barcode:description:purchasePrice:salesPrice:stockToSupply:quantity:supplier
-Coca:123456789:boisson gazeuse:0.99:1.50:10:100:Coca company
-Coca light:1234567899:boisson gazeuse:0.99:1.50:10:100:Coca company
+Bustier Easy Expression (M):7612367025560:Ce bustier est une solution simple et confortable pour exprimer son lait sans les mains, qui restent libres pour vaquer à d'autres activités:39.90:46.65:1:1:Medela
+Sac City Style:7612367025571:Ce sac permet de transporter tire lait personnel et le lait receuillis au frais grâce à sa pochette isotherme et son comportiment réfrigérant qui peut contenir 4 biberons.:49.9:52.85:1:2:Medela
+BabyCook solo:3384349122683:Le fameux 4 en 1 cuit à la vapeur, mixe, réchauffe et décongèle tout en préservant les vitamines et les minéraux des petits pots maison.:99.00:129.00:1:2:Béaba
+Brosse à dent électrique Prosonic:3760165440161:Brosse à dent rétroéclairée qui dispose de deux têtes interchangeables. La première en silicone double face, adaptée au premier âge pour le soin des gencives et le spoussées dentaires. La seconde avce des poils souples est destinées aux dents de lait. Nettoyage en douceur grâce à une vibration contrôlée et une tête ronde.:9.00:12.90:1:2:Visiomed
+Potty 3 en 1:049345000542:Selon l'autonomie de l'enfant ce produit peut servir de pot, de réducteur de toilettes et de marchepied.:25.30:29.95:1:4:Prince Lionheart

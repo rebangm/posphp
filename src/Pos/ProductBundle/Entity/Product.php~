@@ -38,7 +38,7 @@ class Product
     /**
      * @var integer
      *
-     * @ORM\Column(name="barcode", type="integer", unique=true)
+     * @ORM\Column(name="barcode", type="bigint", unique=true)
      */
     private $barcode;
 

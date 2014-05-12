@@ -26,7 +26,9 @@ class Products implements FixtureInterface, ContainerAwareInterface
 
         $products = explode("\n", $file);
         array_shift($products);
+
         foreach($products as $productInfos){
+
             $productExplodeInfos = explode(":",$productInfos);
             $product = new Product();
             $product->setName($productExplodeInfos[0]);
