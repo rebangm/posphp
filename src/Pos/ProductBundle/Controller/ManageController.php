@@ -5,6 +5,7 @@ namespace Pos\ProductBundle\Controller;
 use Pos\ProductBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Pos\ProductBundle\Entity\Product;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class ManageController extends Controller
 {
@@ -40,11 +41,37 @@ class ManageController extends Controller
     }
 
     /**
-     * @param Customer $customer
-     * @ParamConverter("customer", options={"mapping": {"customer_id": "id"}})
+     * @param Product $product
+     * @ParamConverter("product", options={"mapping": {"product_id": "id"}})
      */
     public function editAction(Product $product){
+        $request = $this->get('request');
+        $session = $request->getSession();
 
+        if (!$product) {
+            throw $this->createNotFoundException('Aucun produit trouvé pour : '.$product);
+        }
+
+        $form = $this->createForm(new ProductType(), $product);
+        if ( $request->getMethod() == 'POST' ) {
+            $form->handleRequest($request);
+            if ( $form->isValid() ) {
+
+                $em   = $this->getDoctrine()->getManager();
+                $em->persist($product);
+
+                $em->flush();
+                $session->getFlashBag()->add('success',
+                    'Modification effectuée!');
+                return $this->redirect($this->generateUrl('pos_product_manage_list'));
+            } else {
+                $session->getFlashBag()->add('error',
+                    'Données du formulaire invalide.');
+            }
+        }
+
+        return $this->render('PosProductBundle:Manage:edit.html.twig',
+            array( 'form' => $form->createView(), 'id'   => $product->getId() ));
     }
 
     /**
