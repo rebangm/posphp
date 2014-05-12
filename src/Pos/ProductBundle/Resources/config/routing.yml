@@ -8,6 +8,11 @@ pos_product_manage_add:
     pattern:   /product/manage/add/
     defaults: { _controller: PosProductBundle:Manage:add, page : 1 }
 
+pos_product_manage_view:
+    pattern:   /product/manage/view/{product_id}
+    defaults: { _controller: PosProductBundle:Manage:index, product : 1 }
+    requirements:
+        page: \d+
 
 pos_product_manage_list:
     pattern:   /product/manage/page/{page}
