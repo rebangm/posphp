@@ -1,0 +1,27 @@
+/* 
+    Document   : customerManage
+    Created on : 28 oct. 2013, 22:34:50
+    Author     : jpdepigny
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+ul.children{
+    list-style-type: none;
+}
+
+ul.children li{
+    border: solid 1px gray;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+
+.product-form-button{
+    padding: 10px;
+    margin: 10px 0;
+    background-color: lightgrey;
+    border-radius: 10px;
+}

@@ -151,7 +151,9 @@ class ManageController extends Controller
     }
 
 
-
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
     public function addAction(){
 
         $customer = new Customer();
