@@ -22,7 +22,7 @@ class Products implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
 
-        $file = file_get_contents("/opt/hosting/dev.pos.fr/src/Pos/ProductBundle/DataFixtures/ORM/data.txt");
+        $file = file_get_contents(dirname(__FILE__)."/data.txt");
 
         $products = explode("\n", $file);
         array_shift($products);
