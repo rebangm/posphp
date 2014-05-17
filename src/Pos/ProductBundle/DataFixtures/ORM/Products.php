@@ -22,7 +22,7 @@ class Products implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
 
-        $file = file_get_contents(dirname(__FILE__)."/data.txt");
+        $file = file_get_contents(dirname(__FILE__)."/products.txt");
 
         $products = explode("\n", $file);
         array_shift($products);
@@ -38,7 +38,7 @@ class Products implements FixtureInterface, ContainerAwareInterface
             $product->setSalePrice($productExplodeInfos[4]);
             $product->setStockToSupply($productExplodeInfos[5]);
             $product->setQuantity($productExplodeInfos[6]);
-            $product->setSupplier($productExplodeInfos[7]);
+            //$product->setSupplier($productExplodeInfos[7]);
 
 
 

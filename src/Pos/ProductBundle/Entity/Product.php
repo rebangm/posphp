@@ -101,14 +101,14 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="vat_rate", type="decimal", scale=2)
+     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Vat", cascade={"persist"})
      */
     private $vatRate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="supplier", type="string")
+     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Supplier", cascade={"persist"})
      */
     private $supplier;
 

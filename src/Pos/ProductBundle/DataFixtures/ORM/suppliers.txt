@@ -1,0 +1,6 @@
+companyName:CompanyNumber:phoneNumber:address:city:state:zipcode:country:freeShipment
+Medela:111111111111111:0450101010:10, rue des Bébés:Annecy::74960:0
+Nookies:22222222222222222:0450202020:20, rue des Bébés:Les Arcs/Argens::83460:500
+Bébé Confort:333333333333333333:0450303030:30, rue des Bébés:Toulouse::31000:200
+Beaba:4444444444444444:0450404040:40, rue des Bébés:Saint-Tropez::83600:10
+Red Castle:555555555555555:0450505050:50, rue des Bébés:London:London:1000:2000
