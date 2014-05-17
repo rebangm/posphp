@@ -28,6 +28,14 @@ class Vat
      */
     private $rate;
 
+
+    /**
+     *
+     */
+    public function __toString(){
+        return $this->rate . " %";
+    }
+
     /**
      * Get id
      *
