@@ -28,7 +28,6 @@ class Vat
      */
     private $rate;
 
-
     /**
      * Get id
      *
@@ -60,5 +59,28 @@ class Vat
     public function getRate()
     {
         return $this->rate;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Pos\ProductBundle\Entity\Vat $product
+     * @return Vat
+     */
+    public function setProduct(\Pos\ProductBundle\Entity\Vat $product)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Pos\ProductBundle\Entity\Vat 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

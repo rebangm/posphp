@@ -107,6 +107,4 @@ class ManageController extends Controller
             array( 'form' => $form->createView(), 'id'   => $product->getId() ));
     }
 
-
-
 }

@@ -4,12 +4,14 @@
 namespace Pos\CustomerBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Pos\ProductBundle\Entity\Product;
 
-class Products implements FixtureInterface, ContainerAwareInterface
+class Products extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
 
     private $container;
@@ -38,7 +40,8 @@ class Products implements FixtureInterface, ContainerAwareInterface
             $product->setSalePrice($productExplodeInfos[4]);
             $product->setStockToSupply($productExplodeInfos[5]);
             $product->setQuantity($productExplodeInfos[6]);
-            //$product->setSupplier($productExplodeInfos[7]);
+            $product->setSupplier($manager->merge($this->getReference('supplier'.rand(0, 4))));
+            $product->setVat($manager->merge($this->getReference('vat'.rand(0, 3))));
 
 
 
@@ -47,6 +50,11 @@ class Products implements FixtureInterface, ContainerAwareInterface
 
         // On déclenche l'enregistrement
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 3; // the order in which fixtures will be loaded
     }
 
 }

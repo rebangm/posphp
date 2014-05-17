@@ -99,18 +99,17 @@ class Product
     private $bookedQuantity;
 
     /**
-     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Vat", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Vat", inversedBy="product", cascade={"persist"})
      */
-    private $vatRate;
+    private $vat;
 
     /**
-     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Supplier", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Supplier", inversedBy="product", cascade={"persist"})
      */
     private $supplier;
+
 
 
     /**
@@ -387,28 +386,6 @@ class Product
         return $this->bookedQuantity;
     }
 
-    /**
-     * Set vatRate
-     *
-     * @param string $vatRate
-     * @return Product
-     */
-    public function setVatRate($vatRate)
-    {
-        $this->vatRate = $vatRate;
-    
-        return $this;
-    }
-
-    /**
-     * Get vatRate
-     *
-     * @return string 
-     */
-    public function getVatRate()
-    {
-        return $this->vatRate;
-    }
 
     /**
      * Set salePrice
@@ -433,26 +410,6 @@ class Product
         return $this->salePrice;
     }
 
-    /**
-     * Set supplier
-     *
-     * @param string $supplier
-     * @return Product
-     */
-    public function setSupplier($supplier)
-    {
-        $this->supplier = $supplier;
-    
-        return $this;
-    }
 
-    /**
-     * Get supplier
-     *
-     * @return string 
-     */
-    public function getSupplier()
-    {
-        return $this->supplier;
-    }
+
 }

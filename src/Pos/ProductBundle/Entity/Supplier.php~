@@ -84,7 +84,6 @@ class Supplier
      */
     private $freeShipment;
 
-
     /**
      * Get id
      *
@@ -300,5 +299,28 @@ class Supplier
     public function getFreeShipment()
     {
         return $this->freeShipment;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Pos\ProductBundle\Entity\Supplier $product
+     * @return Supplier
+     */
+    public function setProduct(\Pos\ProductBundle\Entity\Supplier $product)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Pos\ProductBundle\Entity\Supplier 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

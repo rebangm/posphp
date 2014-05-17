@@ -75,17 +75,8 @@
                     {{ form_errors(form.bookedQuantity) }}
                     {{ form_widget(form.bookedQuantity) }}
                 </fieldset>
-                <fieldset>
-                    {{ form_label(form.vatRate) }}
-                    {{ form_errors(form.vatRate) }}
-                    {{ form_widget(form.vatRate) }}
-                </fieldset>
-                <fieldset>
-                    {{ form_label(form.supplier) }}
-                    {{ form_errors(form.supplier) }}
-                    {{ form_widget(form.supplier) }}
-                </fieldset>
 
+                {{ form_rest(form) }}
 
             </div>
 

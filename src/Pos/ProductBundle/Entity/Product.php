@@ -99,18 +99,17 @@ class Product
     private $bookedQuantity;
 
     /**
-     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Vat", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Vat", inversedBy="product", cascade={"persist"})
      */
-    private $vatRate;
+    private $vat;
 
     /**
-     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Pos\ProductBundle\Entity\Supplier", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Supplier", inversedBy="product", cascade={"persist"})
      */
     private $supplier;
+
 
 
     /**
@@ -387,28 +386,6 @@ class Product
         return $this->bookedQuantity;
     }
 
-    /**
-     * Set vatRate
-     *
-     * @param string $vatRate
-     * @return Product
-     */
-    public function setVatRate($vatRate)
-    {
-        $this->vatRate = $vatRate;
-    
-        return $this;
-    }
-
-    /**
-     * Get vatRate
-     *
-     * @return string 
-     */
-    public function getVatRate()
-    {
-        return $this->vatRate;
-    }
 
     /**
      * Set salePrice
@@ -433,13 +410,39 @@ class Product
         return $this->salePrice;
     }
 
+
+
+
+    /**
+     * Set vat
+     *
+     * @param \Pos\ProductBundle\Entity\Vat $vat
+     * @return Product
+     */
+    public function setVat(\Pos\ProductBundle\Entity\Vat $vat = null)
+    {
+        $this->vat = $vat;
+    
+        return $this;
+    }
+
+    /**
+     * Get vat
+     *
+     * @return \Pos\ProductBundle\Entity\Vat 
+     */
+    public function getVat()
+    {
+        return $this->vat;
+    }
+
     /**
      * Set supplier
      *
-     * @param string $supplier
+     * @param \Pos\ProductBundle\Entity\Supplier $supplier
      * @return Product
      */
-    public function setSupplier($supplier)
+    public function setSupplier(\Pos\ProductBundle\Entity\Supplier $supplier = null)
     {
         $this->supplier = $supplier;
     
@@ -449,7 +452,7 @@ class Product
     /**
      * Get supplier
      *
-     * @return string 
+     * @return \Pos\ProductBundle\Entity\Supplier 
      */
     public function getSupplier()
     {
