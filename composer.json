@@ -22,7 +22,8 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "mopa/barcode-bundle": "dev-master"
+        "mopa/barcode-bundle": "dev-master",
+        "avalanche123/imagine-bundle": "dev-master"
 
     },
     "scripts": {
@@ -52,7 +53,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.3-dev"
+            "dev-master": "2.4-dev"
         }
     }
 }
