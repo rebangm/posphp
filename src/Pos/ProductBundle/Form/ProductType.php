@@ -29,7 +29,7 @@ class ProductType extends AbstractType
             ->add('restockingSupplier')
             ->add('bookedQuantity')
             ->add('vat', 'entity', array(
-                'class' => 'PosProductBundle:Vat', 'property' => 'rate'))
+                'class' => 'PosProductBundle:Vat'))
             ->add('supplier', 'entity', array(
                 'class' => 'PosProductBundle:Supplier','property' => 'companyName'))
             ->add('Enregistrer' , 'submit', array(
