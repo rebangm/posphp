@@ -19,9 +19,15 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
-            ->add('utilization')
-            ->add('typesetting')
+            ->add('description', 'textarea', array(
+                'attr' => array('class' => 'form-control'),
+                'required' => false))
+            ->add('utilization', 'textarea', array(
+                'attr' => array('class' => 'form-control'),
+                'required' => false))
+            ->add('typesetting', 'textarea', array(
+                'attr' => array('class' => 'form-control'),
+                'required' => false))
             ->add('barcode')
             ->add('purchasePrice')
             ->add('salePrice')
