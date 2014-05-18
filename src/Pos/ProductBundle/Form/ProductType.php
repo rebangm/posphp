@@ -2,9 +2,12 @@
 
 namespace Pos\ProductBundle\Form;
 
+use Pos\ProductBundle\Entity\SupplierRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+
 
 class ProductType extends AbstractType
 {
@@ -31,7 +34,12 @@ class ProductType extends AbstractType
             ->add('vat', 'entity', array(
                 'class' => 'PosProductBundle:Vat'))
             ->add('supplier', 'entity', array(
-                'class' => 'PosProductBundle:Supplier','property' => 'companyName'))
+                'class' => 'Pos\ProductBundle\Entity\Supplier',
+                'property' => 'companyName',
+                'query_builder' => function(SupplierRepository $er) {
+                        return $er->getAllOrderByCompanyName();
+                    }
+            ))
             ->add('Enregistrer' , 'submit', array(
                 'attr' => array('class' => 'btn btn-primary')))
         ;

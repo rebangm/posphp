@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class SupplierRepository extends EntityRepository
 {
+
+    public function getAllOrderByCompanyName()
+    {
+
+        $queryBuilder = $this->_em->createQueryBuilder('s')
+            ->select('s')
+            ->from($this->_entityName, 's')
+            ->orderBy("s.companyName");
+
+        return $queryBuilder;
+    }
 }
