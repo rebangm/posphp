@@ -23,8 +23,6 @@ class ProductType extends AbstractType
             ->add('utilization')
             ->add('typesetting')
             ->add('barcode')
-            ->add('generate','button', array(
-                'attr' => array('class' => 'btn btn-dark')))
             ->add('purchasePrice')
             ->add('salePrice')
             ->add('quantity')
@@ -32,8 +30,10 @@ class ProductType extends AbstractType
             ->add('restockingSupplier')
             ->add('bookedQuantity')
             ->add('vat', 'entity', array(
+                'attr' => array('class' => 'form-control'),
                 'class' => 'PosProductBundle:Vat'))
             ->add('supplier', 'entity', array(
+                'attr' => array('class' => 'form-control'),
                 'class' => 'Pos\ProductBundle\Entity\Supplier',
                 'property' => 'companyName',
                 'query_builder' => function(SupplierRepository $er) {
