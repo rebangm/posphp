@@ -22,19 +22,18 @@ class OrderForm
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="SupplierProductId", type="string", length=255)
-     */
-    private $supplierProductId;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="OrderDate", type="datetime")
      */
     private $orderDate;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TotalPrice", type="decimal")
+     */
+    private $totalPrice;
 
     /**
      * Get id
@@ -70,25 +69,25 @@ class OrderForm
     }
 
     /**
-     * Set supplierProductId
+     * Set totalPrice
      *
-     * @param string $supplierProductId
+     * @param string $totalPrice
      * @return OrderForm
      */
-    public function setSupplierProductId($supplierProductId)
+    public function setTotalPrice($totalPrice)
     {
-        $this->supplierProductId = $supplierProductId;
+        $this->totalPrice = $totalPrice;
     
         return $this;
     }
 
     /**
-     * Get supplierProductId
+     * Get totalPrice
      *
      * @return string 
      */
-    public function getSupplierProductId()
+    public function getTotalPrice()
     {
-        return $this->supplierProductId;
+        return $this->totalPrice;
     }
 }

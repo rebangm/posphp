@@ -9,9 +9,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Pos\ProductBundle\Entity\Product;
+use Pos\ProductBundle\Entity\Orderform;
 
-class Products extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
+class OrderForms extends AbstractFixture implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
 
     private $container;
@@ -24,28 +24,27 @@ class Products extends AbstractFixture implements FixtureInterface, ContainerAwa
     public function load(ObjectManager $manager)
     {
 
-        $file = file_get_contents(dirname(__FILE__)."/products.txt");
+        $file = file_get_contents(dirname(__FILE__)."/orderForm.txt");
 
-        $products = explode("\n", $file);
-        array_shift($products);
+        $orderForms = explode("\n", $file);
+        array_shift($orderForms);
 
-        foreach($products as $productInfos){
+        foreach($orderForms as $OrderFormInfos){
 
-            $productExplodeInfos = explode(":",$productInfos);
-            $product = new Product();
-            $product->setName($productExplodeInfos[0]);
-            $product->setBarcode($productExplodeInfos[1]);
-            $product->setDescription($productExplodeInfos[2]);
-            $product->setPurchasePrice($productExplodeInfos[3]);
-            $product->setSalePrice($productExplodeInfos[4]);
-            $product->setStockToSupply($productExplodeInfos[5]);
-            $product->setQuantity($productExplodeInfos[6]);
-            $product->setSupplier($manager->merge($this->getReference('supplier'.rand(0, 4))));
-            $product->setVat($manager->merge($this->getReference('vat'.rand(0, 3))));
+            $orderFormExplodeInfos = explode(":",$OrderFormInfos);
+            $orderForm = new Product();
+            $orderForm->setName($orderFormExplodeInfos[0]);
 
 
 
-            $manager->persist($product);
+
+
+
+
+
+
+
+            $manager->persist($orderForm);
         }
 
         // On déclenche l'enregistrement

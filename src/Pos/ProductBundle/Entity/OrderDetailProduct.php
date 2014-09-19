@@ -13,13 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderDetailProduct
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Product")
      */
-    private $id;
+    private $product;
+
+    /**
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\OrderForm")
+     */
+    private $orderForm;
 
     /**
      * @var integer
@@ -42,12 +45,6 @@ class OrderDetailProduct
      */
     private $discount;
 
-    /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="Vat", type="object")
-     */
-    private $vat;
 
 
     /**
@@ -107,29 +104,6 @@ class OrderDetailProduct
     }
 
     /**
-     * Set vat
-     *
-     * @param \stdClass $vat
-     * @return OrderDetailProduct
-     */
-    public function setVat($vat)
-    {
-        $this->vat = $vat;
-    
-        return $this;
-    }
-
-    /**
-     * Get vat
-     *
-     * @return \stdClass 
-     */
-    public function getVat()
-    {
-        return $this->vat;
-    }
-
-    /**
      * Set unitPrice
      *
      * @param float $unitPrice
@@ -150,5 +124,51 @@ class OrderDetailProduct
     public function getUnitPrice()
     {
         return $this->unitPrice;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Pos\ProductBundle\Entity\Product $product
+     * @return OrderDetailProduct
+     */
+    public function setProduct(\Pos\ProductBundle\Entity\Product $product)
+    {
+        $this->product = $product;
+    
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Pos\ProductBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set orderForm
+     *
+     * @param \Pos\ProductBundle\Entity\OrderForm $orderForm
+     * @return OrderDetailProduct
+     */
+    public function setOrderForm(\Pos\ProductBundle\Entity\OrderForm $orderForm)
+    {
+        $this->orderForm = $orderForm;
+    
+        return $this;
+    }
+
+    /**
+     * Get orderForm
+     *
+     * @return \Pos\ProductBundle\Entity\OrderForm 
+     */
+    public function getOrderForm()
+    {
+        return $this->orderForm;
     }
 }

@@ -22,19 +22,18 @@ class OrderForm
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="SupplierProductId", type="string", length=255)
-     */
-    private $supplierProductId;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="OrderDate", type="datetime")
      */
     private $orderDate;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TotalPrice", type="decimal")
+     */
+    private $totalPrice;
 
     /**
      * Get id
