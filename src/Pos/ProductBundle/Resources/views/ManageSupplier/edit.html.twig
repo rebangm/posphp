@@ -1,0 +1,22 @@
+{% extends "PosProductBundle::layout.html.twig" %}
+
+{% block content %}
+
+    {% include "PosProductBundle::alert.html.twig" %}
+
+    <div class="form">
+        <form action="{{ path('pos_supplier_manage_edit', {'product_id': id }) }}" {{ form_enctype(form) }} method="POST">
+            {# {{ form_widget(form) }} #}
+            {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+            <div class="product-form-button">
+                {{ form_widget(form.Enregistrer) }}
+            </div>
+
+            <div class="left form-group">
+                {{ form_rest(form) }}
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+

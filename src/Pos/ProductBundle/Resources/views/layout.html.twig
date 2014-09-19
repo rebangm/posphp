@@ -22,9 +22,12 @@
 
 
 {% block leftmenu %}
-    <ul class="nav nav-pills nav-stacked">
+    {#<ul class="nav nav-pills nav-stacked">#}
+    <ul class="">
             <li><a href="{{ path('pos_product_manage') }}">Produits</a></li>
             <li><a href="{{ path('pos_product_manage_add') }}">Ajouter un produit</a></li>
+            <li><a href="{{ path('pos_supplier_manage_list') }}">Fournisseurs</a></li>
+            <li><a href="{{ path('pos_supplier_manage_list') }}">Ajouter un fournisseur</a></li>
     </ul>
 {% endblock %}
 
