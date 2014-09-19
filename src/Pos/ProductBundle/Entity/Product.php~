@@ -412,4 +412,50 @@ class Product
 
 
 
+
+    /**
+     * Set vat
+     *
+     * @param \Pos\ProductBundle\Entity\Vat $vat
+     * @return Product
+     */
+    public function setVat(\Pos\ProductBundle\Entity\Vat $vat = null)
+    {
+        $this->vat = $vat;
+    
+        return $this;
+    }
+
+    /**
+     * Get vat
+     *
+     * @return \Pos\ProductBundle\Entity\Vat 
+     */
+    public function getVat()
+    {
+        return $this->vat;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @param \Pos\ProductBundle\Entity\Supplier $supplier
+     * @return Product
+     */
+    public function setSupplier(\Pos\ProductBundle\Entity\Supplier $supplier = null)
+    {
+        $this->supplier = $supplier;
+    
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @return \Pos\ProductBundle\Entity\Supplier 
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
 }
