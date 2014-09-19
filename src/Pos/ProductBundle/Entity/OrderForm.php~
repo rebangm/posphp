@@ -47,29 +47,6 @@ class OrderForm
     }
 
     /**
-     * Set supplierId
-     *
-     * @param string $supplierId
-     * @return OrderForm
-     */
-    public function setSupplierId($supplierId)
-    {
-        $this->supplierId = $supplierId;
-    
-        return $this;
-    }
-
-    /**
-     * Get supplierId
-     *
-     * @return string 
-     */
-    public function getSupplierId()
-    {
-        return $this->supplierId;
-    }
-
-    /**
      * Set orderDate
      *
      * @param \DateTime $orderDate
@@ -90,5 +67,28 @@ class OrderForm
     public function getOrderDate()
     {
         return $this->orderDate;
+    }
+
+    /**
+     * Set supplierProductId
+     *
+     * @param string $supplierProductId
+     * @return OrderForm
+     */
+    public function setSupplierProductId($supplierProductId)
+    {
+        $this->supplierProductId = $supplierProductId;
+    
+        return $this;
+    }
+
+    /**
+     * Get supplierProductId
+     *
+     * @return string 
+     */
+    public function getSupplierProductId()
+    {
+        return $this->supplierProductId;
     }
 }
