@@ -7,14 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Pos\ProductBundle\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class ManageController extends Controller
+class ProductController extends Controller
 {
     public function indexAction($page)
     {
         if ( $page < 1 ) {
             $error = "the page requested doesn't exist";
             $this->get('session')->getFlashBag()->add('error', $error);
-            return $this->redirect($this->generateUrl('pos_customer_manage',
+            return $this->redirect($this->generateUrl('pos_home_homepage',
                 array( 'page' => 1 )));
         }
 
@@ -33,7 +33,7 @@ class ManageController extends Controller
         );
 
         $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
-        $pagination->setUsedRoute('pos_customer_manage_list');
+        $pagination->setUsedRoute('pos_product_manage_list');
 
         return $this->render('PosProductBundle:Manage:manage.html.twig',
             array('pagination' => $pagination ));

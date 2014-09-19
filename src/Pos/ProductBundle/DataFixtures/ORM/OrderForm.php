@@ -32,7 +32,7 @@ class OrderForms extends AbstractFixture implements FixtureInterface, ContainerA
         foreach($orderForms as $OrderFormInfos){
 
             $orderFormExplodeInfos = explode(":",$OrderFormInfos);
-            $orderForm = new Product();
+            $orderForm = new orderForm();
             $orderForm->setName($orderFormExplodeInfos[0]);
 
 
@@ -53,7 +53,7 @@ class OrderForms extends AbstractFixture implements FixtureInterface, ContainerA
 
     public function getOrder()
     {
-        return 3; // the order in which fixtures will be loaded
+        return 4; // the order in which fixtures will be loaded
     }
 
 }

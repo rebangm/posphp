@@ -1,29 +1,39 @@
 pos_product_manage:
     pattern:   /product/manage/
-    defaults: { _controller: PosProductBundle:Manage:index, page : 1 }
+    defaults: { _controller: PosProductBundle:Product:index, page : 1 }
     requirements:
         page: \d+
 
 pos_product_manage_add:
     pattern:   /product/manage/add/
-    defaults: { _controller: PosProductBundle:Manage:add, page : 1 }
+    defaults: { _controller: PosProductBundle:Product:add, page : 1 }
 
 pos_product_manage_view:
     pattern:   /product/manage/view/{product_id}
-    defaults: { _controller: PosProductBundle:Manage:edit, product : 1 }
+    defaults: { _controller: PosProductBundle:Product:edit, product : 1 }
     requirements:
         page: \d+
 
 pos_product_manage_list:
     pattern:   /product/manage/page/{page}
-    defaults: { _controller: PosProductBundle:Manage:index, page : 1 }
+    defaults: { _controller: PosProductBundle:Product:index, page : 1 }
     requirements:
         page: \d+
 
 pos_product_manage_edit:
     pattern:   /product/manage/edit/{product_id}
-    defaults: { _controller: PosProductBundle:Manage:edit, product : 1 }
+    defaults: { _controller: PosProductBundle:Product:edit, product : 1 }
     requirements:
         product: \d+
 
+pos_order_manage:
+    pattern:   /order/manage/
+    defaults: { _controller: PosProductBundle:Order:index, page : 1 }
+    requirements:
+        page: \d+
 
+pos_order_manage_list:
+    pattern:   /order/manage/page/{page}
+    defaults: { _controller: PosProductBundle:Order:index, page : 1 }
+    requirements:
+        page: \d+

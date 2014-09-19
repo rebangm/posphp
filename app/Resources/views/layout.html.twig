@@ -15,7 +15,14 @@
                     <li class="active"><a href="{{path('pos_home_homepage')}}">Home</a></li>
                     <li><a href="{{path('pos_user_manage')}}">User</a></li>
                     <li><a href="{{path('pos_customer_manage')}}">Customer</a></li>
-                    <li><a href="{{path('pos_product_manage')}}">Warehouse</a></li>
+                    {#<li><a href="{{path('pos_product_manage')}}">Warehouse</a></li>#}
+                    <li><a href="{{path('pos_product_manage')}}" class="dropdown-toggle" data-toggle="dropdown">Warehouse <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{path('pos_product_manage')}}">Product</a></li>
+                            <li><a href="{{path('pos_order_manage')}}">Order</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul></li>
                     <li><a href="#contact">Contact</a></li>
                     
                 </ul>
