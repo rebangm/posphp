@@ -45,24 +45,25 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div id="leftMenu" class="col-md-2">
-            <a class="posLogo"href="#">
-                <img src="/img/logo.png" class="logo"/>
-            </a>
-            {% block leftmenu %}
-                <h3>Mini-ERP</h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="{{ path('pos_home_homepage') }}">Accueil de l'application</a></li>
-                </ul>
-            {% endblock %}
+    {% block total %}
+        <div class="row">
+            <div id="leftMenu" class="col-md-2">
+                <a class="posLogo"href="#">
+                    <img src="/img/logo.png" class="logo"/>
+                </a>
+                {% block leftmenu %}
+                    <h3>Mini-ERP</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="{{ path('pos_home_homepage') }}">Accueil de l'application</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+            <div id="content" class="col-md-10">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
-        <div id="content" class="col-md-10">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-
+    {% endblock %}
     <hr>
 </div>
 {% endblock %}
