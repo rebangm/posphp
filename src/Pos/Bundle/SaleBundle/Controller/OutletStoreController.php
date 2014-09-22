@@ -4,10 +4,10 @@ namespace Pos\Bundle\SaleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class OutletStoreController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PosSaleBundle:Default:index.html.twig');
+        return $this->render('PosSaleBundle:OutletStore:index.html.twig');
     }
 }

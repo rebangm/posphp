@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+
+    {{parent() }}
+    {%stylesheets output='css/compiled/sale.css' filter='cssrewrite'
+                "bundles/possale/css/*"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent() }}
+    {%stylesheets output='js/compiled/sale.js'
+                "bundles/possale/js/*"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}" /></script>
+    {% endstylesheets %}
+{% endblock %}
+
+
+
+{% block leftmenu %}
+    <ul class="nav nav-pills nav-stacked">
+
+    </ul>
+{% endblock %}
+
+{% if form is defined %}
+    {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+{% endif %}
+

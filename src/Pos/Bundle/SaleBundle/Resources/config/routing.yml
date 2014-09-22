@@ -1,3 +1,7 @@
 pos_sale_homepage:
-    pattern:  /hello/{name}
+    pattern:  /sales
     defaults: { _controller: PosSaleBundle:Default:index }
+
+pos_sale_sales_point:
+    pattern:  /sales/point-of-sales
+    defaults: { _controller: PosSaleBundle:OutletStore:index }
