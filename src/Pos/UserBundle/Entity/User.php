@@ -94,7 +94,7 @@ class User implements AdvancedUserInterface
     private $roles;
     
     /**
-     * @var string
+     * @var array
      *
      * @ORM\Column(name="is_active", type="boolean")
      */
