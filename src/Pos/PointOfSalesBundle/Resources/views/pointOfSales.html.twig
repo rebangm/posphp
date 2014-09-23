@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+
+    {{parent() }}
+    {%stylesheets output='css/compiled/pointofsale.css' filter='cssrewrite'
+                "bundles/pospointofsale/css/*"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+{% block javascripts %}
+    {{parent() }}
+    {%stylesheets output='js/compiled/pointofsale.js'
+                "bundles/pospointofsale/js/*"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}" /></script>
+    {% endstylesheets %}
+{% endblock %}
+
+
+
+{% block leftmenu %}
+    <ul class="nav nav-pills nav-stacked">
+
+    </ul>
+{% endblock %}
+
+{% if form is defined %}
+    {% form_theme form 'PosHomeBundle:Form:form_theme_layout.html.twig' %}
+{% endif %}
+

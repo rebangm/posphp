@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\Bundle\SaleBundle;
+namespace Pos\SaleBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

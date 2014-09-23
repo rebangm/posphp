@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\Bundle\SaleBundle\DependencyInjection;
+namespace Pos\SaleBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

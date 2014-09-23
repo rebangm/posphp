@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\Bundle\SaleBundle\Controller;
+namespace Pos\SaleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

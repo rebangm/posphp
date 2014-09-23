@@ -25,7 +25,7 @@ class AppKernel extends Kernel
             new Pos\CustomerBundle\PosCustomerBundle(),
             new Pos\PaginatorBundle\PosPaginatorBundle(),
             new Pos\ProductBundle\PosProductBundle(),
-            new Pos\Bundle\SaleBundle\PosSaleBundle(),
+            new Pos\SaleBundle\PosSaleBundle(),
             new Pos\PointOfSalesBundle\PosPointOfSalesBundle(),
         );
 

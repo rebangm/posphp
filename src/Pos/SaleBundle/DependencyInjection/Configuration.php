@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\Bundle\SaleBundle\DependencyInjection;
+namespace Pos\SaleBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
