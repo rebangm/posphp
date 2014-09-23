@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Pos\PaginatorBundle\PosPaginatorBundle(),
             new Pos\ProductBundle\PosProductBundle(),
             new Pos\Bundle\SaleBundle\PosSaleBundle(),
+            new Pos\PointOfSalesBundle\PosPointOfSalesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

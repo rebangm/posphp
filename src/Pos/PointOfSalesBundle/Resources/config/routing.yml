@@ -1,0 +1,3 @@
+pos_point_of_sales_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: PosPointOfSalesBundle:Default:index }

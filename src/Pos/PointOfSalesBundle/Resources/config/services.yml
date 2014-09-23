@@ -1,0 +1,7 @@
+parameters:
+#    pos_point_of_sales.example.class: Pos\PointOfSalesBundle\Example
+
+services:
+#    pos_point_of_sales.example:
+#        class: %pos_point_of_sales.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
