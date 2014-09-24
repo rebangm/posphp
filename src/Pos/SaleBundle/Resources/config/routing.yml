@@ -2,6 +2,14 @@ pos_sale_homepage:
     pattern:  /sales
     defaults: { _controller: PosSaleBundle:Default:index }
 
-pos_sale_sales_point:
-    pattern:  /sales/point-of-sales
-    defaults: { _controller: PosSaleBundle:OutletStore:index }
+pos_order_manage:
+    pattern:   /order/manage/
+    defaults: { _controller: PosProductBundle:Order:index, page : 1 }
+    requirements:
+        page: \d+
+
+pos_order_manage_list:
+    pattern:   /order/manage/page/{page}
+    defaults: { _controller: PosProductBundle:Order:index, page : 1 }
+    requirements:
+        page: \d+
