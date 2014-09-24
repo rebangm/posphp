@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\ProductBundle\Entity;
+namespace Pos\SaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,19 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * OrderDetailProduct
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Pos\ProductBundle\Entity\OrderDetailProductRepository")
+ * @ORM\Entity(repositoryClass="Pos\SaleBundle\Entity\OrderDetailProductRepository")
  */
 class OrderDetailProduct
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\Product")
+     * @ORM\ManyToOne(targetEntity="Pos\SaleBundle\Entity\Product")
      */
     private $product;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Pos\ProductBundle\Entity\OrderForm")
+     * @ORM\ManyToOne(targetEntity="Pos\SaleBundle\Entity\OrderForm")
      */
     private $orderForm;
 
@@ -129,10 +129,10 @@ class OrderDetailProduct
     /**
      * Set product
      *
-     * @param \Pos\ProductBundle\Entity\Product $product
+     * @param \Pos\SaleBundle\Entity\Product $product
      * @return OrderDetailProduct
      */
-    public function setProduct(\Pos\ProductBundle\Entity\Product $product)
+    public function setProduct(\Pos\SaleBundle\Entity\Product $product)
     {
         $this->product = $product;
     
@@ -142,7 +142,7 @@ class OrderDetailProduct
     /**
      * Get product
      *
-     * @return \Pos\ProductBundle\Entity\Product 
+     * @return \Pos\SaleBundle\Entity\Product
      */
     public function getProduct()
     {
@@ -152,10 +152,10 @@ class OrderDetailProduct
     /**
      * Set orderForm
      *
-     * @param \Pos\ProductBundle\Entity\OrderForm $orderForm
+     * @param \Pos\SaleBundle\Entity\OrderForm $orderForm
      * @return OrderDetailProduct
      */
-    public function setOrderForm(\Pos\ProductBundle\Entity\OrderForm $orderForm)
+    public function setOrderForm(\Pos\SaleBundle\Entity\OrderForm $orderForm)
     {
         $this->orderForm = $orderForm;
     
@@ -165,7 +165,7 @@ class OrderDetailProduct
     /**
      * Get orderForm
      *
-     * @return \Pos\ProductBundle\Entity\OrderForm 
+     * @return \Pos\SaleBundle\Entity\OrderForm
      */
     public function getOrderForm()
     {

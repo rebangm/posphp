@@ -1,13 +1,12 @@
 <?php
 
-namespace Pos\ProductBundle\Controller;
+namespace Pos\SaleBundle\Controller;
 
-use Pos\ProductBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Pos\ProductBundle\Entity\Product;
+use Pos\SaleBundle\Entity\OrderForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
     public function indexAction($page)
     {
@@ -21,8 +20,7 @@ class ProductController extends Controller
         $limit  = 5;
 
         $em = $this->getDoctrine()->getManager();
-        //$dql   = "SELECT a FROM PosUserBundle:User a ORDER BY a." . $order . " ASC";
-        $dql   = "SELECT c FROM PosProductBundle:Product c ORDER BY c.id ASC";
+        $dql   = "SELECT c FROM PosSaleBundle:OrderForm c ORDER BY c.id ASC";
 
         $query = $em->createQuery($dql);
         $paginator  = $this->get('knp_paginator');
@@ -33,9 +31,9 @@ class ProductController extends Controller
         );
 
         $pagination->setTemplate('PosPaginatorBundle::slidingPagination.html.twig');
-        $pagination->setUsedRoute('pos_product_manage_list');
+        $pagination->setUsedRoute('pos_order_manage_list');
 
-        return $this->render('PosProductBundle:Manage:manage.html.twig',
+        return $this->render('PosSaleBundle:OrderForm:manage.html.twig',
             array('pagination' => $pagination ));
 
     }
@@ -70,7 +68,7 @@ class ProductController extends Controller
             }
         }
 
-        return $this->render('PosProductBundle:Manage:edit.html.twig',
+        return $this->render('PosSaleBundle:Manage:edit.html.twig',
             array( 'form' => $form->createView(), 'id'   => $product->getId() ));
     }
 
@@ -103,7 +101,7 @@ class ProductController extends Controller
             }
         }
 
-        return $this->render('PosProductBundle:Manage:add.html.twig',
+        return $this->render('PosSaleBundle:Manage:add.html.twig',
             array( 'form' => $form->createView(), 'id'   => $product->getId() ));
     }
 

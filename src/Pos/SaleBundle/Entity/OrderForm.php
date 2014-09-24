@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\ProductBundle\Entity;
+namespace Pos\SaleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * OrderForm
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Pos\ProductBundle\Entity\OrderFormRepository")
+ * @ORM\Entity(repositoryClass="Pos\SaleBundle\Entity\OrderFormRepository")
  */
 class OrderForm
 {

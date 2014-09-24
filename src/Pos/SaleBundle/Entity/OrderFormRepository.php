@@ -1,6 +1,6 @@
 <?php
 
-namespace Pos\ProductBundle\Entity;
+namespace Pos\SaleBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
