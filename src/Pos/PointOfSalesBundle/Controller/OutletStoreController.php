@@ -8,6 +8,6 @@ class OutletStoreController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PosSaleBundle:OutletStore:index.html.twig');
+        return $this->render('PosPointOfSalesBundle:OutletStore:index.html.twig');
     }
 }
