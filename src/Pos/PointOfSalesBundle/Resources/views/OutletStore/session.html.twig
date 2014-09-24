@@ -1,0 +1,14 @@
+
+        <div class="col-md-12">
+            {% if saleSession == false %}
+                <form action="{{ path('pos_pointofsales_ajax_start_session', {'active': 0 }) }}">
+                    <button type="submit" class="btn btn-primary">Nouvelle session</button>
+                </form>
+            {% else %}
+                <form action="{{ path('pos_pointofsales_ajax_end_session', {'active': 0 }) }}">
+                    <button type="submit" class="btn btn-primary">Fermer la session</button>
+                </form>
+            {% endif %}
+        </div>
+
+

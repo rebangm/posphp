@@ -1,3 +1,11 @@
 pos_point_of_sales_homepage:
     pattern:  /point-of-sales
     defaults: { _controller: PosPointOfSalesBundle:OutletStore:index }
+
+pos_pointofsales_ajax_start_session:
+    pattern:  /point-of-sales/session-start
+    defaults: { _controller: PosPointOfSalesBundle:OutletStore:index }
+
+pos_pointofsales_ajax_end_session:
+    pattern:  /point-of-sales/session-end
+    defaults: { _controller: PosPointOfSalesBundle:OutletStore:index }
