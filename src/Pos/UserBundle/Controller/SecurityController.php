@@ -4,18 +4,19 @@ namespace Pos\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Request;
 
 class SecurityController extends Controller
 {
     
-    public function loginAction()
+    public function loginAction(Request $request)
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
           return $this->redirect($this->generateUrl('pos_home_homepage'));
         }
         
-        $request = $this->getRequest();
+        //$request = $this->getRequest();
         $session = $request->getSession();
         
         // On vérifie s'il y a des erreurs d'une précédente soumission du formulaire

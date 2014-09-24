@@ -20,7 +20,7 @@ class UserEditType extends UserType
                     'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
                 ),
                 'required'  => true,
-                'multiple' => false
+                'multiple' => true
             ));
     }
 

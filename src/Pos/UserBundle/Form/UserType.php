@@ -29,7 +29,7 @@ class UserType extends AbstractType
                         'ROLE_SUPERADMIN'   => 'ROLE_SUPERADMIN',
                     ),
                 'required'  => true,
-                'multiple' => false))
+                'multiple' => true))
             ->add('isActive', 'checkbox', array (
             		'label'=>'Utilisateur actif',
             		'required' => false))
