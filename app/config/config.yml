@@ -29,7 +29,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ PosUserBundle, PosCustomerBundle, PosProductBundle, PosSaleBundle  ]
+    bundles:        [ PosUserBundle, PosCustomerBundle, PosProductBundle, PosSaleBundle, PosPointOfSalesBundle  ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
