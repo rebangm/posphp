@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Pos\HRBundle\PosHRBundle(),
             new Pos\UserBundle\PosUserBundle(),
             new Pos\HomeBundle\PosHomeBundle(),

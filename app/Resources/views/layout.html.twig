@@ -12,6 +12,8 @@
             </button>
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
+                    {# {{ knp_menu_render('PosHomeBundle:Builder:mainMenu') }} #}
                     <li class="active"><a href="{{path('pos_home_homepage')}}">Dashboard</a></li>
                     <li><a href="{{path('pos_point_of_sales_homepage')}}">Point of sales</a></li>
                     <li><a href="{{path('pos_customer_manage')}}">Customer</a></li>
@@ -50,7 +52,7 @@
 </div>
 
 <div class="container-fluid">
-    {% block total %}
+    {% block fullContent %}
         <div class="row">
             <div id="leftMenu" class="col-md-2">
                 <a class="posLogo"href="#">
